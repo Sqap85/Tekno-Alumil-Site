@@ -1,0 +1,133 @@
+{
+  "home": {
+    "welcome_message": "Welcome to Tekno Alümil!",
+    "service_description": "We provide quality service for doors, windows, garage doors, and more.",
+    "about_button": "Learn More About Us",
+    "working_hours_title": "Working Hours",
+    "working_hours_detail": "Monday - Friday, 08:00 - 17:00"
+  },
+  "footer": {
+    "address": "Address: Tekno Alümil, Güvercinlik Industrial Zone, Famagusta, Cyprus",
+    "phone": "Phone:",
+    "email": "Email:",
+    "links": {
+      "about": "About Us",
+      "products": "Products",
+      "contact": "Contact"
+    }
+  },
+  "header": {
+    "contact": "Contact",
+    "about": "About Us",
+    "products": "Products",
+    "language_english": "English",
+    "language_turkish": "Turkish",
+    "language_greek": "Greek"
+  },
+  "about": {
+    "title": "About Us",
+    "header_title": "Tekno Alümil",
+    "header_subtitle": "Since 2008, the address of quality and trust.",
+    "description": "Since 2008, as Tekno Alümil, we have been inspired by aluminum, combining durability and aesthetics in everything from doors to windows, garage doors to custom designs. We build trust by placing quality and customer satisfaction at the center of our work.",
+    "qualities": [
+      {
+        "title": "High Quality",
+        "description": "We bring your home and workplace together with long-lasting and superior quality aluminum solutions."
+      },
+      {
+        "title": "Expert Team",
+        "description": "Our experienced team is here for you on every project, providing tailored solutions to your needs."
+      },
+      {
+        "title": "Customer Focused",
+        "description": "You are always our priority. We work with a service approach that exceeds your expectations."
+      },
+      {
+        "title": "Aesthetics and Durability",
+        "description": "With our products that combine modern design and durability, we ensure satisfaction that lasts for years."
+      }
+    ],
+    "founder_section": {
+      "title": "Selçuk Elibol",
+      "description": "The founder of Tekno Alümil, Selçuk Elibol, offers innovative solutions with over 20 years of industry experience and a customer-focused vision."
+    },
+    "services_section": {
+      "title": "Our Services",
+      "services": [
+        {
+          "title": "Aluminum Works",
+          "description": "We provide ideal solutions by blending the quality of aluminum with professional craftsmanship."
+        },
+        {
+          "title": "Doors",
+          "description": "Our doors, which stand out with both aesthetics and durability, add value to your living spaces."
+        },
+        {
+          "title": "Windows",
+          "description": "We offer comfort and aesthetics together with energy-efficient and modern-designed windows."
+        },
+        {
+          "title": "Garage Doors",
+          "description": "We redefine comfort with reliable, aesthetic, and technological garage door systems."
+        }
+      ],
+      "button_text": "Check Out Our Products for More"
+    }
+  },
+   "contact": {
+      "validation": {
+        "name_min": "Your name must be at least 3 characters long",
+        "name_max": "Your name can be at most 50 characters",
+        "name_format": "The name must only contain letters",
+        "name_required": "The name field is required",
+        "email_valid": "Please enter a valid email address",
+        "email_local_part": "Your email address must contain a valid username",
+        "email_domain": "Your email address must contain a valid domain",
+        "email_required": "The email field is required",
+        "message_min": "The message must be at least 5 characters",
+        "message_max": "The message can be at most 500 characters",
+        "message_required": "The message field is required"
+    },"page": {
+      "title": "Contact",
+      "no_title": "No Title Available"
+      },
+      "info": {
+        "title": "Contact Information",
+        "phone_label": "Phone",
+        "email_label": "Email",
+        "address_label": "Address",
+        "address": "Tekno Alümil, Güvercinlik Industrial Zone, Famagusta, Cyprus"
+      },
+      "map": {
+        "title": "Location",
+        "error_message": "Google Maps could not be loaded. Please try again later."
+      },
+      "form": {
+    "placeholders": {
+      "name": "Your name",
+      "email": "Email",
+      "message": "Your message"
+    },
+    "buttons": {
+      "submit": "Send",
+      "resend": "Resend",
+      "verify_and_send": "Verify and Send"
+    },
+    "messages": {
+      "success": "Your message has been successfully sent!",
+      "error": "Message could not be sent. Please try again.",
+      "captcha_error": "Complete the CAPTCHA validation.",
+      "verification_email_sent": "A verification code has been sent to your email address.",
+      "verification_email_error": "The verification code could not be sent. Please try again.",
+      "invalid_or_expired_code": "The verification code is invalid or expired. Please request a new code.",
+      "invalid_verification_code": "The verification code is incorrect. Please try again."
+    },
+    "verification": {
+      "title": "Contact Us",
+      "code_timer": "Code expires in: {{time}} seconds",
+      "code_label": "Verification Code",
+      "enter_code": "Please enter the verification code sent to your email address."
+    }
+    }
+  }
+}
