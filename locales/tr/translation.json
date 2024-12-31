@@ -1,9 +1,9 @@
 {
   "home": {
-    "welcome_message": "Tekno Alümil’e Hoş Geldiniz!",
-    "service_description": "Kapılar, pencereler, garaj kapıları ve daha fazlasında kaliteli hizmet sunuyoruz.",
-    "about_button": "Hakkımızda Daha Fazla Bilgi Alın",
-    "working_hours_title": "Çalışma Saatlerimiz",
+    "welcome_message": "Tekno Alümil'e Hoş Geldiniz!",
+    "service_description": "Kapılar, pencereler, garaj kapıları ve daha fazlası için kaliteli hizmet sunuyoruz.",
+    "about_button": "Hakkımızda Daha Fazla Bilgi Edinin",
+    "working_hours_title": "Çalışma Saatleri",
     "working_hours_detail": "Pazartesi - Cuma, 08:00 - 17:00"
   },
   "footer": {
@@ -24,63 +24,61 @@
     "language_turkish": "Türkçe",
     "language_greek": "Yunanca"
   },
-
   "about": {
     "title": "Hakkımızda",
     "header_title": "Tekno Alümil",
-    "header_subtitle": "2008 yılından bu yana kalite ve güvenin adresiyiz.",
-    "description": "2008 yılından bu yana, Tekno Alümil olarak alüminyumdan ilham alıyor, kapıdan pencereye, garaj kapılarından özel tasarımlara kadar dayanıklılık ve estetiği bir araya getiriyoruz. Kaliteyi ve müşteri memnuniyetini işimizin merkezine koyarak güven inşa ediyoruz.",
+    "header_subtitle": "2008'den bu yana, kalite ve güvenin adresi.",
+    "description": "2008'den bu yana, Tekno Alümil olarak alüminyumdan ilham alıyoruz. Kapılardan pencerelere, garaj kapılarından özel tasarımlara kadar dayanıklılık ve estetiği birleştiriyoruz. Kaliteyi ve müşteri memnuniyetini işimizin merkezine koyarak güven inşa ediyoruz.",
     "qualities": [
       {
         "title": "Yüksek Kalite",
-        "description": "Evinizi ve işyerinizi, uzun ömürlü ve üstün kaliteye sahip alüminyum çözümlerle buluşturuyoruz."
+        "description": "Ev ve iş yerlerinizi uzun ömürlü, üstün kaliteli alüminyum çözümlerle buluşturuyoruz."
       },
       {
         "title": "Uzman Ekip",
-        "description": "İhtiyacınıza özel çözümler sunan deneyimli ekibimizle, her projede yanınızdayız."
+        "description": "Deneyimli ekibimiz, ihtiyaçlarınıza özel çözümler sunarak her projede yanınızda."
       },
       {
-        "title": "Müşteri Odaklılık",
-        "description": "Önceliğimiz daima sizsiniz. Beklentilerinizi aşan bir hizmet anlayışıyla çalışıyoruz."
+        "title": "Müşteri Odaklı",
+        "description": "Sizin memnuniyetiniz bizim önceliğimiz. Beklentilerinizi aşan bir hizmet anlayışıyla çalışıyoruz."
       },
       {
         "title": "Estetik ve Dayanıklılık",
-        "description": "Modern tasarım ve dayanıklılığı bir araya getiren ürünlerimizle, yıllar boyu sürecek memnuniyet sağlıyoruz."
+        "description": "Modern tasarım ile dayanıklılığı birleştiren ürünlerimizle yıllar süren memnuniyet sağlıyoruz."
       }
     ],
     "founder_section": {
       "title": "Selçuk Elibol",
-      "description": "Tekno Alümil’in kurucusu Selçuk Elibol, 20 yılı aşkın sektör deneyimi ve müşteri odaklı vizyonuyla yenilikçi çözümler sunuyor."
+      "description": "Tekno Alümil'in kurucusu Selçuk Elibol, 20 yılı aşkın sektör tecrübesi ve müşteri odaklı vizyonu ile yenilikçi çözümler sunmaktadır."
     },
     "services_section": {
       "title": "Hizmetlerimiz",
       "services": [
         {
           "title": "Alüminyum İşleri",
-          "description": "Alüminyumun kalitesini, profesyonel işçilikle harmanlayarak ideal çözümler sunuyoruz."
+          "description": "Alüminyum kalitesini profesyonel işçilikle birleştirerek ideal çözümler sunuyoruz."
         },
         {
           "title": "Kapılar",
-          "description": "Hem estetik hem de dayanıklılığıyla fark yaratan kapılarımız, yaşam alanlarınıza değer katıyor."
+          "description": "Hem estetik hem de dayanıklılığıyla öne çıkan kapılarımız, yaşam alanlarınıza değer katıyor."
         },
         {
           "title": "Pencereler",
-          "description": "Enerji tasarruflu ve modern tasarımlı pencerelerle, konfor ve estetiği bir arada sunuyoruz."
+          "description": "Enerji tasarruflu ve modern tasarıma sahip pencerelerimizle konfor ve estetiği bir arada sunuyoruz."
         },
         {
           "title": "Garaj Kapıları",
-          "description": "Güvenilir, estetik ve teknolojik garaj kapıları sistemleriyle rahatlığı yeniden tanımlıyoruz."
+          "description": "Güvenilir, estetik ve teknolojik garaj kapısı sistemlerimizle konforu yeniden tanımlıyoruz."
         }
       ],
-      "button_text": "Daha Fazlası İçin Ürünlerimize Göz Atın"
+      "button_text": "Daha Fazlası için Ürünlerimizi İnceleyin"
     }
   },
-
-   "contact": {
+  "contact": {
     "validation": {
-      "name_min": "Adınız en az 3 karakter olmalı",
-      "name_max": "Adınız en fazla 50 karakter olabilir",
-      "name_format": "Ad yalnızca harfler içermelidir",
+      "name_min": "Adınız en az 3 karakter uzunluğunda olmalıdır",
+      "name_max": "Adınız en fazla 50 karakter uzunluğunda olabilir",
+      "name_format": "Ad yalnızca harflerden oluşmalıdır",
       "name_required": "Ad alanı zorunludur",
       "email_valid": "Geçerli bir e-posta adresi giriniz",
       "email_local_part": "E-posta adresiniz geçerli bir kullanıcı adı içermelidir",
@@ -92,7 +90,7 @@
     },
     "page": {
       "title": "İletişim",
-      "no_title": "Başlık Bilgisi Yok"
+      "no_title": "Başlık Bulunamadı"
     },
     "info": {
       "title": "İletişim Bilgileri",
@@ -103,7 +101,7 @@
     },
     "map": {
       "title": "Konum",
-      "error_message": "Google Maps yüklenemedi. Lütfen daha sonra tekrar deneyin."
+      "error_message": "Google Haritalar yüklenemedi. Lütfen daha sonra tekrar deneyin."
     },
     "form": {
       "placeholders": {
@@ -122,14 +120,14 @@
         "captcha_error": "CAPTCHA doğrulamasını tamamlayın.",
         "verification_email_sent": "E-posta adresinize bir doğrulama kodu gönderildi.",
         "verification_email_error": "Doğrulama kodu gönderilemedi. Lütfen tekrar deneyin.",
-        "invalid_or_expired_code": "Doğrulama kodu geçersiz veya süresi dolmuş. Lütfen yeni bir kod isteyin.",
-        "invalid_verification_code": "Doğrulama kodu yanlış. Lütfen tekrar deneyin."
+        "invalid_or_expired_code": "Doğrulama kodu geçersiz veya süresi dolmuş. Lütfen yeni bir kod talep edin.",
+        "invalid_verification_code": "Doğrulama kodu hatalı. Lütfen tekrar deneyin."
       },
       "verification": {
         "title": "Bize Ulaşın",
         "code_timer": "Kodun süresi doluyor: {{time}} saniye",
         "code_label": "Doğrulama Kodu",
-        "enter_code": "E-posta adresinize gönderilen doğrulama kodunu girin."
+        "enter_code": "Lütfen e-posta adresinize gönderilen doğrulama kodunu giriniz."
       }
     }
   }
