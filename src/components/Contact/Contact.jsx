@@ -466,7 +466,7 @@ const Contact = () => {
       }}
     >
       <Typography variant="h4" textAlign="center">
-        {t("contact.page.title", "Contact")}
+        {t("contact.page.title")}
       </Typography>
       {renderContactInfo()}
       {renderGoogleMaps()}
