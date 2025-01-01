@@ -25,22 +25,12 @@ import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const theme = useTheme();
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [captchaVerified, setCaptchaVerified] = useState(false);
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [mapError, setMapError] = useState(false);
   const iframeRef = useRef(null);
   const { t } = useTranslation();
 
   useEffect(() => {
-    const checkIframeLoaded = () => {
-      if (iframeRef.current && iframeRef.current.contentDocument) {
-        setIsMapLoading(false);
-      }
-    };
-
     const interval = setInterval(() => {
       if (iframeRef.current && iframeRef.current.contentDocument) {
         setIsMapLoading(false);
@@ -56,39 +46,39 @@ const Contact = () => {
   const googleMapsEmbedUrl =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.971742487271!2d33.867924699999996!3d35.1323787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dfcb4508dc81d5%3A0xd48bdf1c89f2c4ca!2sTekno%20Al%C3%BCmil!5e0!3m2!1str!2str!4v1735452569471!5m2!1str!2st";
 
-    const validationSchema = Yup.object({
-      name: Yup.string()
-        .min(3, t("contact.validation.name_min"))
-        .max(50, t("contact.validation.name_max"))
-        .matches(
-          /^[a-zA-ZçÇğĞıİöÖşŞüÜ\s]+$/,
-          t("contact.validation.name_format")
-        )
-        .required(t("contact.validation.name_required")),
-  
-      email: Yup.string()
-        .email(t("contact.validation.email_valid"))
-        .matches(
-          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-          t("contact.validation.email_valid")
-        )
-        .test(
-          "is-valid-local-part",
-          t("contact.validation.email_local_part"),
-          (value) => {
-            if (!value) return false;
-            const localPart = value.split("@")[0];
-            return !/^\d+$/.test(localPart) && /[a-zA-Z]/.test(localPart);
-          }
-        )
-        .test("is-valid-domain", t("contact.validation.email_domain"), (value) => {
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(3, t("contact.validation.name_min"))
+      .max(50, t("contact.validation.name_max"))
+      .matches(/^[a-zA-ZçÇğĞıİöÖşŞüÜ\s]+$/, t("contact.validation.name_format"))
+      .required(t("contact.validation.name_required")),
+
+    email: Yup.string()
+      .email(t("contact.validation.email_valid"))
+      .matches(
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        t("contact.validation.email_valid")
+      )
+      .test(
+        "is-valid-local-part",
+        t("contact.validation.email_local_part"),
+        (value) => {
+          if (!value) return false;
+          const localPart = value.split("@")[0];
+          return !/^\d+$/.test(localPart) && /[a-zA-Z]/.test(localPart);
+        }
+      )
+      .test(
+        "is-valid-domain",
+        t("contact.validation.email_domain"),
+        (value) => {
           if (!value) return false;
           const domainParts = value.split("@")[1]?.split(".");
           if (!domainParts || domainParts.length < 2) return false;
-  
+
           const domain = domainParts[0];
           const tld = domainParts[domainParts.length - 1];
-  
+
           const validTLDs = [
             "com",
             "net",
@@ -102,53 +92,16 @@ const Contact = () => {
             "tr",
           ];
           return !/^\d+$/.test(domain) && validTLDs.includes(tld);
-        })
-        .required(t("contact.validation.email_required")),
-  
-      message: Yup.string()
-        .min(5, t("contact.validation.message_min"))
-        .max(500, t("contact.validation.message_max"))
-        .required(t("contact.validation.message_required")),
-    });
-
-  const handleCaptchaChange = (value) => {
-    setCaptchaVerified(!!value);
-  };
-
-  const handleSubmit = (values, { resetForm }) => {
-    if (!captchaVerified) {
-      setErrorMessage(t("contact.form.captcha_error"));
-      return;
-    }
-  
-    setIsLoading(true);
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: values.name,
-          email: values.email,
-          message: values.message,
-          reply_to: values.email,
-        },
-        import.meta.env.VITE_EMAILJS_USER_ID
-      )
-      .then(
-        () => {
-          setSuccessMessage(t("contact.form.success_message"));
-          setErrorMessage("");
-          resetForm();
-          setCaptchaVerified(false);
-        },
-        () => {
-          setSuccessMessage("");
-          setErrorMessage(t("contact.form.error_message"));
         }
       )
-      .finally(() => setIsLoading(false));
-  };
-  
+      .required(t("contact.validation.email_required")),
+
+    message: Yup.string()
+      .min(5, t("contact.validation.message_min"))
+      .max(500, t("contact.validation.message_max"))
+      .required(t("contact.validation.message_required")),
+  });
+
   const renderContactInfo = () => (
     <Card>
       <CardContent>
@@ -194,14 +147,11 @@ const Contact = () => {
           <Typography variant="body2" sx={{ fontWeight: "bold" }}>
             <MdLocationOn /> {t("contact.info.address_label")}:
           </Typography>
-          <Typography variant="body2">
-            { t("contact.info.address")}
-          </Typography>
+          <Typography variant="body2">{t("contact.info.address")}</Typography>
         </Box>
       </CardContent>
     </Card>
   );
-  
 
   const renderGoogleMaps = () => (
     <Card>
@@ -245,7 +195,6 @@ const Contact = () => {
       </CardContent>
     </Card>
   );
-  
 
   const renderContactForm = () => {
     const theme = useTheme();
@@ -260,20 +209,20 @@ const Contact = () => {
     const [timeLeft, setTimeLeft] = useState(0);
     const [intervalId, setIntervalId] = useState(null);
     const [canResendCode, setCanResendCode] = useState(false);
-  
+
     const handleCaptchaChange = (value) => {
       setCaptchaVerified(!!value);
     };
-  
+
     const startCountdown = (duration) => {
       let time = duration;
       setTimeLeft(time);
       setCanResendCode(false);
-  
+
       const id = setInterval(() => {
         time -= 1;
         setTimeLeft(time);
-  
+
         if (time <= 0) {
           clearInterval(id);
           setVerificationCode(null);
@@ -282,18 +231,18 @@ const Contact = () => {
           setIsCodeDialogOpen(false);
         }
       }, 1000);
-  
+
       setIntervalId(id);
     };
-  
+
     const sendVerificationCode = (email) => {
       setIsCodeLoading(true);
       const code = Math.floor(100000 + Math.random() * 900000).toString();
       setVerificationCode(code);
-  
+
       if (intervalId) clearInterval(intervalId);
       startCountdown(180);
-  
+
       emailjs
         .send(
           import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -313,7 +262,7 @@ const Contact = () => {
           setIsCodeLoading(false);
         });
     };
-  
+
     const verifyCodeAndSendMessage = (values, resetForm) => {
       if (!verificationCode) {
         setErrorMessage(t("contact.form.messages.invalid_or_expired_code"));
@@ -321,7 +270,7 @@ const Contact = () => {
       }
       if (enteredCode === verificationCode) {
         setIsLoading(true);
-  
+
         emailjs
           .send(
             import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -354,11 +303,13 @@ const Contact = () => {
         setErrorMessage(t("contact.form.messages.invalid_verification_code"));
       }
     };
-  
+
     return (
       <Card>
         <CardContent>
-          <Typography variant="h6">{t("contact.form.verification.title")}</Typography>
+          <Typography variant="h6">
+            {t("contact.form.verification.title")}
+          </Typography>
           <Formik
             initialValues={{ name: "", email: "", message: "" }}
             validationSchema={validationSchema}
@@ -367,7 +318,7 @@ const Contact = () => {
                 setErrorMessage(t("contact.form.messages.captcha_error"));
                 return;
               }
-  
+
               sendVerificationCode(values.email);
             }}
           >
@@ -432,14 +383,18 @@ const Contact = () => {
                     </Button>
                   </Grid>
                 </Grid>
-  
+
                 <Dialog
                   open={isCodeDialogOpen}
                   onClose={() => setIsCodeDialogOpen(false)}
                 >
-                  <DialogTitle>{t("contact.form.verification.title")}</DialogTitle>
+                  <DialogTitle>
+                    {t("contact.form.verification.title")}
+                  </DialogTitle>
                   <DialogContent>
-                    <Typography>{t("contact.form.verification.enter_code")}</Typography>
+                    <Typography>
+                      {t("contact.form.verification.enter_code")}
+                    </Typography>
                     <TextField
                       fullWidth
                       label={t("contact.form.verification.code_label")}
@@ -449,7 +404,9 @@ const Contact = () => {
                       sx={{ marginTop: 2 }}
                     />
                     <Typography sx={{ marginTop: 2 }}>
-                      {t("contact.form.verification.code_timer", { time: timeLeft })}
+                      {t("contact.form.verification.code_timer", {
+                        time: timeLeft,
+                      })}
                     </Typography>
                     {canResendCode && (
                       <Button
@@ -464,7 +421,9 @@ const Contact = () => {
                   </DialogContent>
                   <DialogActions>
                     <Button
-                      onClick={() => verifyCodeAndSendMessage(values, resetForm)}
+                      onClick={() =>
+                        verifyCodeAndSendMessage(values, resetForm)
+                      }
                       variant="contained"
                       color="secondary"
                       disabled={isLoading}
@@ -494,8 +453,6 @@ const Contact = () => {
       </Card>
     );
   };
-  
-  
 
   return (
     <Box
@@ -509,7 +466,8 @@ const Contact = () => {
       }}
     >
       <Typography variant="h4" textAlign="center">
-      {t("contact.page.title", "Contact") || t("contact.page.no_title", "No Title Available")}
+        {t("contact.page.title", "Contact") ||
+          t("contact.page.no_title", "No Title Available")}
       </Typography>
       {renderContactInfo()}
       {renderGoogleMaps()}
