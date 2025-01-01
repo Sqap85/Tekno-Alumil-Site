@@ -3,8 +3,7 @@ import { Box, Typography, Button, Avatar, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { alpha } from "@mui/material/styles";
-import { useTranslation } from "react-i18next"; // Çeviri için import
-
+import { useTranslation } from "react-i18next";
 import image1 from "../../assets/images/1-small.webp";
 import image2 from "../../assets/images/2-small.webp";
 import image3 from "../../assets/images/3-small.webp";
@@ -87,17 +86,19 @@ function Home() {
           >
             {t("home.service_description")}
           </Typography>
-          <Link
-            to="/about"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            <Button variant="contained" color="secondary">
-              {t("home.about_button")}
-            </Button>
-          </Link>
+          <Box sx={{ marginTop: "2rem" }}>
+            <Link
+              to="/about"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <Button variant="contained" color="secondary">
+                {t("home.about_button")}
+              </Button>
+            </Link>
+          </Box>
         </Box>
 
         <Box

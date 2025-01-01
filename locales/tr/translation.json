@@ -12,14 +12,14 @@
     "email": "E-posta:",
     "links": {
       "about": "Hakkımızda",
-      "products": "Ürünler",
+      "services": "Hizmetler",
       "contact": "İletişim"
     }
   },
   "header": {
     "contact": "İletişim",
     "about": "Hakkımızda",
-    "products": "Ürünler",
+    "services": "Hizmetler",
     "language_english": "İngilizce",
     "language_turkish": "Türkçe",
     "language_greek": "Yunanca"
@@ -40,7 +40,7 @@
       },
       {
         "title": "Müşteri Odaklı",
-        "description": "Sizin memnuniyetiniz bizim önceliğimiz. Beklentilerinizi aşan bir hizmet anlayışıyla çalışıyoruz."
+        "description": "Sizin memnuniyetiniz bizim önceliğimizdir. Beklentilerinizi aşan bir hizmet anlayışıyla çalışıyoruz."
       },
       {
         "title": "Estetik ve Dayanıklılık",
@@ -49,48 +49,28 @@
     ],
     "founder_section": {
       "title": "Selçuk Elibol",
-      "description": "Tekno Alümil'in kurucusu Selçuk Elibol, 20 yılı aşkın sektör tecrübesi ve müşteri odaklı vizyonu ile yenilikçi çözümler sunmaktadır."
+      "description": "Tekno Alümil'in kurucusu Selçuk Elibol, 20 yılı aşkın sektör tecrübesi ve müşteri odaklı vizyonuyla yenilikçi çözümler sunmaktadır."
     },
     "services_section": {
-      "title": "Hizmetlerimiz",
-      "services": [
-        {
-          "title": "Alüminyum İşleri",
-          "description": "Alüminyum kalitesini profesyonel işçilikle birleştirerek ideal çözümler sunuyoruz."
-        },
-        {
-          "title": "Kapılar",
-          "description": "Hem estetik hem de dayanıklılığıyla öne çıkan kapılarımız, yaşam alanlarınıza değer katıyor."
-        },
-        {
-          "title": "Pencereler",
-          "description": "Enerji tasarruflu ve modern tasarıma sahip pencerelerimizle konfor ve estetiği bir arada sunuyoruz."
-        },
-        {
-          "title": "Garaj Kapıları",
-          "description": "Güvenilir, estetik ve teknolojik garaj kapısı sistemlerimizle konforu yeniden tanımlıyoruz."
-        }
-      ],
-      "button_text": "DAHA FAZLASI İÇİN ÜRÜNLERİMİZİ İNCELEYİN"
+      "button_text": "DAHA FAZLASI İÇİN HİZMETLERİMİZİ İNCELEYİN"
     }
   },
   "contact": {
     "validation": {
-      "name_min": "Adınız en az 3 karakter uzunluğunda olmalıdır",
-      "name_max": "Adınız en fazla 50 karakter uzunluğunda olabilir",
-      "name_format": "Ad yalnızca harflerden oluşmalıdır",
-      "name_required": "Ad alanı zorunludur",
-      "email_valid": "Geçerli bir e-posta adresi giriniz",
-      "email_local_part": "E-posta adresiniz geçerli bir kullanıcı adı içermelidir",
-      "email_domain": "E-posta adresiniz geçerli bir alan adı içermelidir",
-      "email_required": "E-posta alanı zorunludur",
-      "message_min": "Mesaj en az 5 karakter olmalıdır",
-      "message_max": "Mesaj en fazla 500 karakter olabilir",
-      "message_required": "Mesaj alanı zorunludur"
+      "name_min": "Adınız en az 3 karakter uzunluğunda olmalıdır.",
+      "name_max": "Adınız en fazla 50 karakter uzunluğunda olabilir.",
+      "name_format": "Ad yalnızca harflerden oluşmalıdır.",
+      "name_required": "Ad alanı zorunludur.",
+      "email_valid": "Geçerli bir e-posta adresi giriniz.",
+      "email_local_part": "Geçerli bir e-posta adresi giriniz.",
+      "email_domain": "Geçerli bir e-posta adresi giriniz.",
+      "email_required": "E-posta alanı zorunludur.",
+      "message_min": "Mesaj en az 5 karakter uzunluğunda olmalıdır.",
+      "message_max": "Mesaj en fazla 500 karakter olabilir.",
+      "message_required": "Mesaj alanı zorunludur."
     },
     "page": {
-      "title": "İletişim",
-      "no_title": "Başlık Bulunamadı"
+      "title": "İletişim"
     },
     "info": {
       "title": "İletişim Bilgileri",
@@ -129,6 +109,63 @@
         "code_label": "Doğrulama Kodu",
         "enter_code": "Lütfen e-posta adresinize gönderilen doğrulama kodunu giriniz."
       }
+    }
+  },
+  "services": {
+    "header_title": "Hizmetlerimiz",
+    "header_subtitle": "Yaşam alanlarınız için estetik ve dayanıklı çözümler.",
+    "cards": [
+      {
+        "title": "Alüminyum Dekorasyon",
+        "description": "Alüminyumun kalitesini profesyonel işçilikle birleştirerek ideal çözümler sunuyoruz."
+      },
+      {
+        "title": "Kapılar",
+        "description": "Estetik ve dayanıklılığıyla öne çıkan kapılarımız, yaşam alanlarınıza değer katıyor."
+      },
+      {
+        "title": "Pencereler",
+        "description": "Enerji tasarruflu ve modern tasarımlı pencerelerle konfor ve estetiği bir araya getiriyoruz."
+      },
+      {
+        "title": "Garaj Kapıları",
+        "description": "Güvenilir, estetik ve teknolojik garaj kapısı sistemleriyle hayatınıza rahatlık katıyoruz."
+      },
+      {
+        "title": "Rolling Shutter",
+        "description": "Modern ve dayanıklı rolling shutter sistemleriyle güvenliği artırıyoruz."
+      },
+      {
+        "title": "Balkon Kapatma",
+        "description": "Estetik ve fonksiyonel balkon kapatma çözümleriyle konforlu alanlar yaratıyoruz."
+      },
+      {
+        "title": "Sinek Teli",
+        "description": "Konforlu ve hijyenik sinek teli sistemleriyle yaşam alanlarınıza koruma sağlıyoruz."
+      },
+      {
+        "title": "Fotoselli Kapı",
+        "description": "Teknolojik ve kullanışlı fotoselli kapı sistemlerimizle kullanım kolaylığı sunuyoruz."
+      },
+      {
+        "title": "Kompozit Panel",
+        "description": "Estetik ve dayanıklı kompozit panel çözümleriyle projelerinize değer katıyoruz."
+      },
+      {
+        "title": "Alüminyum Çit",
+        "description": "Şık ve dayanıklı alüminyum çit çözümleriyle güvenliği ön planda tutuyoruz."
+      },
+      {
+        "title": "Pergola",
+        "description": "Modern ve şık pergola çözümleriyle dış mekanlarınızı estetikle buluşturuyoruz."
+      },
+      {
+        "title": "Küpeşte",
+        "description": "Güvenli ve estetik küpeşte çözümleriyle yaşam alanlarınızı tamamlıyoruz."
+      }
+    ],
+    "contact_section": {
+      "button_text": "BİZİMLE İLETİŞİME GEÇİN"
     }
   }
 }

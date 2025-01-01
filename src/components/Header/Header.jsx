@@ -172,36 +172,39 @@ function Header() {
             <Box sx={{ display: "flex", gap: 2 }}>
               <Button
                 color="inherit"
-                onClick={() => handleMenuClick("/contact")}
-                sx={{
-                  ":hover": {
-                    backgroundColor: "secondary.main",
-                  },
-                }}
-              >
-                {t("header.contact")}
-              </Button>
-              <Button
-                color="inherit"
                 onClick={() => handleMenuClick("/about")}
                 sx={{
                   ":hover": {
                     backgroundColor: "secondary.main",
                   },
+                  textTransform: "none",
                 }}
               >
                 {t("header.about")}
               </Button>
               <Button
                 color="inherit"
-                onClick={() => handleMenuClick("/products")}
+                onClick={() => handleMenuClick("/services")}
                 sx={{
                   ":hover": {
                     backgroundColor: "secondary.main",
                   },
+                  textTransform: "none",
                 }}
               >
-                {t("header.products")}
+                {t("header.services")}
+              </Button>
+              <Button
+                color="inherit"
+                onClick={() => handleMenuClick("/contact")}
+                sx={{
+                  ":hover": {
+                    backgroundColor: "secondary.main",
+                  },
+                  textTransform: "none",
+                }}
+              >
+                {t("header.contact")}
               </Button>
             </Box>
           ) : (
@@ -222,14 +225,14 @@ function Header() {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                <MenuItem onClick={() => handleMenuClick("/contact")}>
-                  {t("header.contact")}
-                </MenuItem>
                 <MenuItem onClick={() => handleMenuClick("/about")}>
                   {t("header.about")}
                 </MenuItem>
-                <MenuItem onClick={() => handleMenuClick("/products")}>
-                  {t("header.products")}
+                <MenuItem onClick={() => handleMenuClick("/services")}>
+                  {t("header.services")}
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/contact")}>
+                  {t("header.contact")}
                 </MenuItem>
               </Menu>
             </>

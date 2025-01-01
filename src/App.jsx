@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import About from "./components/About/About";
-import Products from "./components/Products/Products";
+import Services from "./components/Services/Services";
 import Contact from "./components/Contact/Contact";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Home from "./components/Home/Home";
@@ -25,7 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/services" element={<Services />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

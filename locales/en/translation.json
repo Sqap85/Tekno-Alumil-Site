@@ -1,103 +1,83 @@
 {
   "home": {
-    "welcome_message": "Welcome to Tekno Alümil!",
-    "service_description": "We deliver exceptional services for doors, windows, garage doors, and custom solutions.",
+    "welcome_message": "Welcome to Tekno Alumil!",
+    "service_description": "Providing quality services for doors, windows, garage doors, and more.",
     "about_button": "Learn More About Us",
     "working_hours_title": "Working Hours",
-    "working_hours_detail": "Monday - Friday, 08:00 - 17:00"
+    "working_hours_detail": "Monday - Friday, 08:00 AM - 05:00 PM"
   },
   "footer": {
-    "address": "Address: Tekno Alümil, Güvercinlik Industrial Zone, Famagusta, Cyprus",
+    "address": "Address: Tekno Alumil, Güvercinlik Industrial Zone, Famagusta, Cyprus",
     "phone": "Phone:",
     "email": "Email:",
     "links": {
       "about": "About Us",
-      "products": "Products",
+      "services": "Services",
       "contact": "Contact"
     }
   },
   "header": {
     "contact": "Contact",
     "about": "About Us",
-    "products": "Products",
+    "services": "Services",
     "language_english": "English",
     "language_turkish": "Turkish",
     "language_greek": "Greek"
   },
   "about": {
     "title": "About Us",
-    "header_title": "Tekno Alümil",
-    "header_subtitle": "Since 2008, the address of quality and trust.",
-    "description": "Since 2008, Tekno Alümil has been inspired by aluminum, blending durability and aesthetics in everything from doors to windows, garage doors to custom designs. We earn trust by placing quality and customer satisfaction at the heart of everything we do.",
+    "header_title": "Tekno Alumil",
+    "header_subtitle": "The address of quality and trust since 2008.",
+    "description": "Since 2008, Tekno Alumil has been inspired by aluminum. From doors to windows, garage doors to custom designs, we combine durability and aesthetics. By placing quality and customer satisfaction at the core of our business, we build trust.",
     "qualities": [
       {
         "title": "High Quality",
-        "description": "We deliver long-lasting, superior-quality aluminum solutions for your home and workplace."
+        "description": "We bring long-lasting, superior-quality aluminum solutions to your homes and workplaces."
       },
       {
         "title": "Expert Team",
-        "description": "Our experienced team is ready to provide tailored solutions for every project, meeting your unique needs."
+        "description": "Our experienced team offers tailored solutions to meet your needs and supports you in every project."
       },
       {
-        "title": "Customer Focused",
-        "description": "You are always our priority. We provide a service approach designed to exceed your expectations."
+        "title": "Customer-Focused",
+        "description": "Your satisfaction is our priority. We work with a service approach that exceeds your expectations."
       },
       {
         "title": "Aesthetics and Durability",
-        "description": "With products that seamlessly combine modern design and durability, we ensure lasting satisfaction."
+        "description": "Our products, combining modern design and durability, provide years of satisfaction."
       }
     ],
     "founder_section": {
       "title": "Selçuk Elibol",
-      "description": "Selçuk Elibol, the founder of Tekno Alümil, brings over 20 years of industry expertise and a customer-focused vision to deliver innovative solutions."
+      "description": "The founder of Tekno Alumil, Selçuk Elibol, brings over 20 years of industry experience and a customer-focused vision to deliver innovative solutions."
     },
     "services_section": {
-      "title": "Our Services",
-      "services": [
-        {
-          "title": "Aluminum Works",
-          "description": "We combine premium aluminum materials with expert craftsmanship to create ideal solutions."
-        },
-        {
-          "title": "Doors",
-          "description": "Our doors, designed for both beauty and durability, enhance the value and appeal of your spaces."
-        },
-        {
-          "title": "Windows",
-          "description": "We offer energy-efficient, modern-designed windows that deliver both comfort and style."
-        },
-        {
-          "title": "Garage Doors",
-          "description": "We redefine convenience with reliable, aesthetically pleasing, and advanced garage door systems."
-        }
-      ],
-      "button_text": "Discover More by Exploring Our Products"
+      "button_text": "EXPLORE OUR SERVICES FOR MORE"
     }
   },
   "contact": {
     "validation": {
-      "name_min": "Your name must be at least 3 characters long",
-      "name_max": "Your name can be at most 50 characters",
-      "name_format": "The name must only contain letters",
-      "name_required": "The name field is required",
-      "email_valid": "Please enter a valid email address",
-      "email_local_part": "Your email address must contain a valid username",
-      "email_domain": "Your email address must contain a valid domain",
-      "email_required": "The email field is required",
-      "message_min": "The message must be at least 5 characters",
-      "message_max": "The message can be at most 500 characters",
-      "message_required": "The message field is required"
+      "name_min": "Your name must be at least 3 characters long.",
+      "name_max": "Your name can be up to 50 characters long.",
+      "name_format": "Name should consist of letters only.",
+      "name_required": "Name field is required.",
+      "email_valid": "Please enter a valid email address.",
+      "email_local_part": "Please enter a valid email address.",
+      "email_domain": "Please enter a valid email address.",
+      "email_required": "Email field is required.",
+      "message_min": "Message must be at least 5 characters long.",
+      "message_max": "Message can be up to 500 characters long.",
+      "message_required": "Message field is required."
     },
     "page": {
-      "title": "Contact",
-      "no_title": "No Title Available"
+      "title": "Contact"
     },
     "info": {
       "title": "Contact Information",
       "phone_label": "Phone",
       "email_label": "Email",
       "address_label": "Address",
-      "address": "Tekno Alümil, Güvercinlik Industrial Zone, Famagusta, Cyprus"
+      "address": "Tekno Alumil, Güvercinlik Industrial Zone, Famagusta, Cyprus"
     },
     "map": {
       "title": "Location",
@@ -105,30 +85,87 @@
     },
     "form": {
       "placeholders": {
-        "name": "Your name",
-        "email": "Email",
-        "message": "Your message"
+        "name": "Your Name",
+        "email": "Your Email",
+        "message": "Your Message"
       },
       "buttons": {
-        "submit": "Send",
+        "submit": "Submit",
         "resend": "Resend",
         "verify_and_send": "Verify and Send"
       },
       "messages": {
-        "success": "Your message has been successfully sent!",
-        "error": "Message could not be sent. Please try again.",
-        "captcha_error": "Complete the CAPTCHA validation.",
+        "success": "Your message has been sent successfully!",
+        "error": "Failed to send the message. Please try again.",
+        "captcha_error": "Please complete the CAPTCHA verification.",
         "verification_email_sent": "A verification code has been sent to your email address.",
-        "verification_email_error": "The verification code could not be sent. Please try again.",
+        "verification_email_error": "Verification code could not be sent. Please try again.",
         "invalid_or_expired_code": "The verification code is invalid or expired. Please request a new code.",
         "invalid_verification_code": "The verification code is incorrect. Please try again."
       },
       "verification": {
-        "title": "Contact Us",
+        "title": "Get in Touch",
         "code_timer": "Code expires in: {{time}} seconds",
         "code_label": "Verification Code",
-        "enter_code": "Please enter the verification code sent to your email address."
+        "enter_code": "Please enter the verification code sent to your email."
       }
+    }
+  },
+  "services": {
+    "header_title": "Our Services",
+    "header_subtitle": "Aesthetic and durable solutions for your living spaces.",
+    "cards": [
+      {
+        "title": "Aluminum Decoration",
+        "description": "Combining the quality of aluminum with professional craftsmanship, we deliver ideal solutions."
+      },
+      {
+        "title": "Doors",
+        "description": "Our doors stand out with their aesthetics and durability, adding value to your spaces."
+      },
+      {
+        "title": "Windows",
+        "description": "We combine comfort and aesthetics with energy-efficient and modern window designs."
+      },
+      {
+        "title": "Garage Doors",
+        "description": "Reliable, aesthetic, and technological garage door systems that bring convenience to your life."
+      },
+      {
+        "title": "Rolling Shutters",
+        "description": "We enhance security with modern and durable rolling shutter systems."
+      },
+      {
+        "title": "Balcony Enclosures",
+        "description": "Creating comfortable spaces with aesthetic and functional balcony enclosure solutions."
+      },
+      {
+        "title": "Fly Screens",
+        "description": "We protect your living spaces with comfortable and hygienic fly screen systems."
+      },
+      {
+        "title": "Automatic Doors",
+        "description": "Our technological and user-friendly automatic door systems offer ease of use."
+      },
+      {
+        "title": "Composite Panels",
+        "description": "Adding value to your projects with aesthetic and durable composite panel solutions."
+      },
+      {
+        "title": "Aluminum Fences",
+        "description": "Prioritizing security with stylish and durable aluminum fence solutions."
+      },
+      {
+        "title": "Pergolas",
+        "description": "Blending outdoor spaces with aesthetics through modern and elegant pergola solutions."
+      },
+      {
+        "title": "Handrails",
+        "description": "Completing your living spaces with safe and aesthetic handrail solutions."
+      }
+    ],
+    "contact_section": {
+      "button_text": "CONTACT US"
     }
   }
 }

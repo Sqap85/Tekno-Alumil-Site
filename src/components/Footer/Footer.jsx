@@ -66,7 +66,7 @@ function Footer() {
         </MuiLink>
         <MuiLink
           component={Link}
-          to="/products"
+          to="/services"
           sx={{
             color: theme.palette.secondary.main,
             textDecoration: "none",
@@ -76,7 +76,7 @@ function Footer() {
             },
           }}
         >
-          {t("footer.links.products")}
+          {t("footer.links.services")}
         </MuiLink>
         <MuiLink
           component={Link}

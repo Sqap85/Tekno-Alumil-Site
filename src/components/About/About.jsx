@@ -19,13 +19,55 @@ import customerFocusImage from "../../assets/images/customer-focus.webp";
 import teamImage from "../../assets/images/team.webp";
 import designImage from "../../assets/images/design.webp";
 import selcukImage from "../../assets/images/selcuk.webp";
-import havuzImage from "../../assets/images/havuz.webp";
-import kapiImage from "../../assets/images/kapi.webp";
-import surmeImage from "../../assets/images/surme.webp";
-import garajImage from "../../assets/images/garaj.webp";
+
+const aboutCards = [
+  {
+    titleKey: "about.qualities.0.title",
+    descriptionKey: "about.qualities.0.description",
+    image: qualityImage,
+  },
+  {
+    titleKey: "about.qualities.1.title",
+    descriptionKey: "about.qualities.1.description",
+    image: teamImage,
+  },
+  {
+    titleKey: "about.qualities.2.title",
+    descriptionKey: "about.qualities.2.description",
+    image: customerFocusImage,
+  },
+  {
+    titleKey: "about.qualities.3.title",
+    descriptionKey: "about.qualities.3.description",
+    image: designImage,
+  },
+];
+
+const AboutCard = ({ title, description, image }) => (
+  <Card sx={{ height: "100%", textAlign: "center", boxShadow: 3 }}>
+    <CardMedia
+      component="img"
+      image={image}
+      alt={title}
+      sx={{
+        height: "150px",
+        objectFit: "cover",
+        borderRadius: "4px",
+      }}
+    />
+    <CardContent>
+      <Typography variant="h6" component="h3" gutterBottom color="primary">
+        {title}
+      </Typography>
+      <Typography variant="body2" color="textSecondary">
+        {description}
+      </Typography>
+    </CardContent>
+  </Card>
+);
 
 function About() {
-  const { t } = useTranslation(); // Hook for translation
+  const { t } = useTranslation();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -53,20 +95,11 @@ function About() {
           variant={isSmallScreen ? "h4" : "h3"}
           component="h1"
           gutterBottom
-          sx={{
-            fontWeight: "bold",
-            letterSpacing: "0.05em",
-          }}
+          sx={{ fontWeight: "bold", letterSpacing: "0.05em" }}
         >
           Tekno Alümil
         </Typography>
-        <Typography
-          variant="h6"
-          component="p"
-          sx={{
-            opacity: 0.9,
-          }}
-        >
+        <Typography variant="h6" component="p" sx={{ opacity: 0.9 }}>
           {t("about.header_subtitle")}
         </Typography>
       </Paper>
@@ -92,11 +125,7 @@ function About() {
         <Typography
           variant="body1"
           color="textSecondary"
-          sx={{
-            maxWidth: "700px",
-            margin: "0 auto",
-            textAlign: "center",
-          }}
+          sx={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}
         >
           {t("about.description")}
         </Typography>
@@ -109,54 +138,13 @@ function About() {
         justifyContent="center"
         sx={{ marginBottom: "3rem" }}
       >
-        {[
-          {
-            title: t("about.qualities.0.title"),
-            description: t("about.qualities.0.description"),
-            image: qualityImage,
-          },
-          {
-            title: t("about.qualities.1.title"),
-            description: t("about.qualities.1.description"),
-            image: teamImage,
-          },
-          {
-            title: t("about.qualities.2.title"),
-            description: t("about.qualities.2.description"),
-            image: customerFocusImage,
-          },
-          {
-            title: t("about.qualities.3.title"),
-            description: t("about.qualities.3.description"),
-            image: designImage,
-          },
-        ].map((about, index) => (
+        {aboutCards.map((card, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card sx={{ height: "100%", textAlign: "center", boxShadow: 3 }}>
-              <CardMedia
-                component="img"
-                image={about.image}
-                alt={about.title}
-                sx={{
-                  height: "150px",
-                  objectFit: "cover",
-                  borderRadius: "4px",
-                }}
-              />
-              <CardContent>
-                <Typography
-                  variant="h6"
-                  component="h3"
-                  gutterBottom
-                  color="primary"
-                >
-                  {about.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {about.description}
-                </Typography>
-              </CardContent>
-            </Card>
+            <AboutCard
+              title={t(card.titleKey)}
+              description={t(card.descriptionKey)}
+              image={card.image}
+            />
           </Grid>
         ))}
       </Grid>
@@ -198,78 +186,12 @@ function About() {
       </Paper>
 
       {/* Services Section */}
-      <Box>
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          sx={{
-            textAlign: "center",
-            marginBottom: "2rem",
-            color: theme.palette.secondary.main,
-          }}
-        >
-          {t("about.services_section.title")}
-        </Typography>
-        <Grid container spacing={isSmallScreen ? 2 : 4} justifyContent="center">
-          {[
-            {
-              title: t("about.services_section.services.0.title"),
-              description: t("about.services_section.services.0.description"),
-              image: havuzImage,
-            },
-            {
-              title: t("about.services_section.services.1.title"),
-              description: t("about.services_section.services.1.description"),
-              image: kapiImage,
-            },
-            {
-              title: t("about.services_section.services.2.title"),
-              description: t("about.services_section.services.2.description"),
-              image: surmeImage,
-            },
-            {
-              title: t("about.services_section.services.3.title"),
-              description: t("about.services_section.services.3.description"),
-              image: garajImage,
-            },
-          ].map((service, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <Card sx={{ height: "100%", textAlign: "center", boxShadow: 3 }}>
-                <CardMedia
-                  component="img"
-                  image={service.image}
-                  alt={service.title}
-                  sx={{
-                    height: "150px",
-                    objectFit: "cover",
-                    borderRadius: "4px",
-                  }}
-                />
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    gutterBottom
-                    color="primary"
-                  >
-                    {service.title}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {service.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Box sx={{ textAlign: "center", marginTop: "2rem" }}>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <Button variant="contained" color="secondary">
-              {t("about.services_section.button_text")}
-            </Button>
-          </Link>
-        </Box>
+      <Box sx={{ textAlign: "center", marginTop: "2rem", marginBottom: "2rem" }}>
+        <Link to="/services" style={{ textDecoration: "none" }}>
+          <Button variant="contained" color="secondary">
+            {t("about.services_section.button_text")}
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
