@@ -1,23 +1,24 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import {
   Box,
   Typography,
-  Card,
-  CardContent,
-  Grid,
-  CardMedia,
-  Button,
   Paper,
+  Button,
+  Grid,
   useTheme,
   useMediaQuery,
+  Skeleton,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import aluminumImage from "../../assets/images/havuz.webp";
-import doorsImage from "../../assets/images/kapi.webp";
-import windowsImage from "../../assets/images/surme.webp";
-import garageDoorsImage from "../../assets/images/garaj.webp";
+// Lazy load ServiceCard
+const LazyServiceCard = lazy(() => import("../ServiceCard/ServiceCard"));
+
+// Import görseller
+import havuzImage from "../../assets/images/havuz.webp";
+import kapiImage from "../../assets/images/kapi.webp";
+import garajImage from "../../assets/images/garaj.webp";
 import rollingShutterImage from "../../assets/images/rollingShutter.webp";
 import balconyClosureImage from "../../assets/images/balconyClosure.webp";
 import flyScreenImage from "../../assets/images/flyScreen.webp";
@@ -27,73 +28,26 @@ import fenceImage from "../../assets/images/fence.webp";
 import pergolaImage from "../../assets/images/pergola.webp";
 import railingImage from "../../assets/images/railing.webp";
 
+// Service data
+const services = [
+  { titleKey: "services.cards.0.title", descKey: "services.cards.0.description", image: havuzImage },
+  { titleKey: "services.cards.1.title", descKey: "services.cards.1.description", image: kapiImage },
+  { titleKey: "services.cards.2.title", descKey: "services.cards.2.description", image: kapiImage },
+  { titleKey: "services.cards.3.title", descKey: "services.cards.3.description", image: garajImage },
+  { titleKey: "services.cards.4.title", descKey: "services.cards.4.description", image: rollingShutterImage },
+  { titleKey: "services.cards.5.title", descKey: "services.cards.5.description", image: balconyClosureImage },
+  { titleKey: "services.cards.6.title", descKey: "services.cards.6.description", image: flyScreenImage },
+  { titleKey: "services.cards.7.title", descKey: "services.cards.7.description", image: automaticDoorImage },
+  { titleKey: "services.cards.8.title", descKey: "services.cards.8.description", image: compositePanelImage },
+  { titleKey: "services.cards.9.title", descKey: "services.cards.9.description", image: fenceImage },
+  { titleKey: "services.cards.10.title", descKey: "services.cards.10.description", image: pergolaImage },
+  { titleKey: "services.cards.11.title", descKey: "services.cards.11.description", image: railingImage },
+];
+
 function Services() {
   const { t } = useTranslation();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const services = [
-    {
-      title: t("services.cards.0.title"),
-      description: t("services.cards.0.description"),
-      image: aluminumImage,
-    },
-    {
-      title: t("services.cards.1.title"),
-      description: t("services.cards.1.description"),
-      image: doorsImage,
-    },
-    {
-      title: t("services.cards.2.title"),
-      description: t("services.cards.2.description"),
-      image: windowsImage,
-    },
-    {
-      title: t("services.cards.3.title"),
-      description: t("services.cards.3.description"),
-      image: garageDoorsImage,
-    },
-    {
-      title: t("services.cards.4.title"),
-      description: t("services.cards.4.description"),
-      image: rollingShutterImage,
-    },
-    {
-      title: t("services.cards.5.title"),
-      description: t("services.cards.5.description"),
-      image: balconyClosureImage,
-    },
-    {
-      title: t("services.cards.6.title"),
-      description: t("services.cards.6.description"),
-      image: flyScreenImage,
-    },
-    {
-      title: t("services.cards.7.title"),
-      description: t("services.cards.7.description"),
-      image: automaticDoorImage,
-    },
-    {
-      title: t("services.cards.8.title"),
-      description: t("services.cards.8.description"),
-      image: compositePanelImage,
-    },
-    {
-      title: t("services.cards.9.title"),
-      description: t("services.cards.9.description"),
-      image: fenceImage,
-    },
-    {
-      title: t("services.cards.10.title"),
-      description: t("services.cards.10.description"),
-      image: pergolaImage,
-    },
-    {
-      title: t("services.cards.11.title"),
-      description: t("services.cards.11.description"),
-      image: railingImage,
-    },
-  ];
 
   return (
     <Box
@@ -110,82 +64,52 @@ function Services() {
           marginBottom: "3rem",
           padding: "2rem",
           backgroundColor: theme.palette.background.paper,
-          color: theme.palette.text.primary,
-          borderRadius: "8px",
-          boxShadow: theme.shadows[3],
         }}
       >
         <Typography
           variant={isSmallScreen ? "h4" : "h3"}
           component="h1"
-          gutterBottom
-          sx={{
-            fontWeight: "bold",
-            letterSpacing: "0.05em",
-          }}
+          sx={{ fontWeight: "bold", letterSpacing: "0.05em" }}
         >
           {t("services.header_title")}
         </Typography>
-        <Typography
-          variant="h6"
-          component="p"
-          sx={{
-            opacity: 0.9,
-          }}
-        >
+        <Typography variant="h6" sx={{ opacity: 0.9 }}>
           {t("services.header_subtitle")}
         </Typography>
       </Paper>
 
-      {/* Services Cards */}
-      <Grid
-        container
-        spacing={isSmallScreen ? 2 : 4}
-        justifyContent="center"
-        sx={{ marginBottom: "3rem" }}
-      >
-        {services.map((service, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card sx={{ height: "100%", textAlign: "center", boxShadow: 3 }}>
-              <CardMedia
-                component="img"
-                image={service.image}
-                alt={service.title}
-                sx={{
-                  height: "150px",
-                  objectFit: "cover",
-                  borderRadius: "4px",
-                }}
-              />
-              <CardContent>
-                <Typography
-                  variant="h6"
-                  component="h3"
-                  gutterBottom
-                  color="primary"
-                >
-                  {service.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {service.description}
-                </Typography>
-              </CardContent>
-            </Card>
+      {/* Services Section */}
+      <Suspense
+        fallback={
+          <Grid container spacing={isSmallScreen ? 2 : 4} justifyContent="center">
+            {[...Array(8)].map((_, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <Skeleton
+                  variant="rectangular"
+                  width="100%"
+                  height={200}
+                  sx={{ borderRadius: "4px" }}
+                />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        }
+      >
+        <Grid container spacing={isSmallScreen ? 2 : 4} justifyContent="center">
+          {services.map((service, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <LazyServiceCard
+                title={t(service.titleKey)}
+                description={t(service.descKey)}
+                image={service.image}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Suspense>
 
       {/* Contact Section */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "2rem",
-          marginBottom: "2rem",
-          padding: "1rem",
-        }}
-      >
+      <Box sx={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
         <Link to="/contact" style={{ textDecoration: "none" }}>
           <Button variant="contained" color="secondary" size="large">
             {t("services.contact_section.button_text")}
