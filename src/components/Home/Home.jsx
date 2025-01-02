@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, Avatar, useTheme } from "@mui/material";
+import { Helmet } from "react-helmet";
+import { Box, Typography, Button, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { alpha } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import image1 from "../../assets/images/1-small.webp";
 import image2 from "../../assets/images/2-small.webp";
 import image3 from "../../assets/images/3-small.webp";
 
-const images = [image1, image2, image3];
+const images = [
+  { src: image1, alt: "Image 1 Description" },
+  { src: image2, alt: "Image 2 Description" },
+  { src: image3, alt: "Image 3 Description" },
+];
 
 function Home() {
   const theme = useTheme();
   const { t } = useTranslation();
   const [currentImage, setCurrentImage] = useState(0);
-  const [loadedImages, setLoadedImages] = useState([true, false, false]);
+
+  useEffect(() => {
+    const preloadImages = () => {
+      images.forEach((image) => {
+        const img = new Image();
+        img.src = image.src;
+      });
+    };
+    preloadImages();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,24 +36,15 @@ function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const nextImageIndex = (currentImage + 1) % images.length;
-    if (!loadedImages[nextImageIndex]) {
-      const img = new Image();
-      img.src = images[nextImageIndex];
-      img.onload = () => {
-        setLoadedImages((prev) => {
-          const updated = [...prev];
-          updated[nextImageIndex] = true;
-          return updated;
-        });
-      };
-    }
-  }, [currentImage]);
-
   return (
     <>
-      <link rel="preload" as="image" href={images[0]} />
+      <Helmet>
+        <title>Kıbrıs Alüminyum Kapı ve Pencere Çözümleri - Tekno Alümil</title>
+        <meta
+          name="description"
+          content="Tekno Alümil, Kıbrıs'ta alüminyum kapı, pencere, garaj kapısı ve balkon kapatma çözümleri sunar. Şimdi kaliteli ve estetik ürünlerimizi keşfedin!"
+        />
+      </Helmet>
 
       <Box
         component="main"
@@ -49,11 +53,10 @@ function Home() {
           width: "100vw",
           height: "100vh",
           overflow: "hidden",
-          backgroundImage: `url(${images[currentImage]})`,
+          backgroundImage: `url(${images[currentImage].src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           transition: "background-image 0.6s ease-in-out",
-          boxSizing: "border-box",
         }}
       >
         <Box
@@ -75,7 +78,7 @@ function Home() {
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
             }}
           >
-            {t("home.welcome_message")}
+            {t("home.welcome_message", "Welcome to Tekno Alümil")}
           </Typography>
           <Typography
             variant="body1"
@@ -84,7 +87,7 @@ function Home() {
               fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
             }}
           >
-            {t("home.service_description")}
+            {t("home.service_description", "We offer high-quality aluminum solutions.")}
           </Typography>
           <Box sx={{ marginTop: "2rem" }}>
             <Link
@@ -95,64 +98,9 @@ function Home() {
               }}
             >
               <Button variant="contained" color="secondary">
-                {t("home.about_button")}
+                {t("home.about_button", "Learn More About Us")}
               </Button>
             </Link>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 70,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: { xs: "90%", sm: "75%", md: "60%", lg: "40%" },
-            padding: { xs: "10px", sm: "15px" },
-            backgroundColor: alpha(theme.palette.background.default, 0.8),
-            borderRadius: "12px",
-            display: "flex",
-            alignItems: "center",
-            gap: 2,
-            boxShadow: theme.shadows[5],
-          }}
-        >
-          <Avatar
-            sx={{
-              backgroundColor: theme.palette.primary.main,
-              width: { xs: 40, sm: 50 },
-              height: { xs: 40, sm: 50 },
-            }}
-          >
-            <AccessTimeIcon
-              sx={{
-                fontSize: { xs: 24, sm: 30 },
-                color: theme.palette.primary.contrastText,
-              }}
-            />
-          </Avatar>
-          <Box>
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              sx={{
-                fontSize: { xs: "14px", sm: "16px", md: "18px" },
-                lineHeight: "1.2",
-                color: theme.palette.text.primary,
-              }}
-            >
-              {t("home.working_hours_title")}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                fontSize: { xs: "12px", sm: "14px", md: "16px" },
-                lineHeight: "1.2",
-                color: theme.palette.text.secondary,
-              }}
-            >
-              {t("home.working_hours_detail")}
-            </Typography>
           </Box>
         </Box>
       </Box>
