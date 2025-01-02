@@ -18,6 +18,7 @@ const LazyServiceCard = lazy(() => import("../ServiceCard/ServiceCard"));
 // Import görseller
 import havuzImage from "../../assets/images/havuz.webp";
 import kapiImage from "../../assets/images/kapi.webp";
+import pencereImage from "../../assets/images/surme.webp";
 import garajImage from "../../assets/images/garaj.webp";
 import rollingShutterImage from "../../assets/images/rollingShutter.webp";
 import balconyClosureImage from "../../assets/images/balconyClosure.webp";
@@ -32,7 +33,7 @@ import railingImage from "../../assets/images/railing.webp";
 const services = [
   { titleKey: "services.cards.0.title", descKey: "services.cards.0.description", image: havuzImage },
   { titleKey: "services.cards.1.title", descKey: "services.cards.1.description", image: kapiImage },
-  { titleKey: "services.cards.2.title", descKey: "services.cards.2.description", image: kapiImage },
+  { titleKey: "services.cards.2.title", descKey: "services.cards.2.description", image: pencereImage },
   { titleKey: "services.cards.3.title", descKey: "services.cards.3.description", image: garajImage },
   { titleKey: "services.cards.4.title", descKey: "services.cards.4.description", image: rollingShutterImage },
   { titleKey: "services.cards.5.title", descKey: "services.cards.5.description", image: balconyClosureImage },
