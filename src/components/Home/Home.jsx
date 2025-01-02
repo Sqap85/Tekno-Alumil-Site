@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { Box, Typography, Button, useTheme } from "@mui/material";
+import { Box, Typography, Button, Avatar, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { alpha } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
-import image1 from "../../assets/images/1-small.webp";
-import image2 from "../../assets/images/2-small.webp";
-import image3 from "../../assets/images/3-small.webp";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import image1 from "../../assets/images/1-small.avif";
+import image2 from "../../assets/images/2-small.avif";
+import image3 from "../../assets/images/3-small.avif";
+
+// Lazy loading component for better performance
+const LazyImage = ({ src, alt }) => (
+  <img src={src} alt={alt} loading="lazy" style={{ display: "none" }} />
+);
 
 const images = [
   { src: image1, alt: "Image 1 Description" },
@@ -20,16 +26,16 @@ function Home() {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
+    // Preload critical images
     const preloadImages = () => {
-      images.forEach((image) => {
-        const img = new Image();
-        img.src = image.src;
-      });
+      const img = new Image();
+      img.src = images[0].src; // Preload first image for LCP
     };
     preloadImages();
   }, []);
 
   useEffect(() => {
+    // Change the image every 5 seconds
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
@@ -44,6 +50,8 @@ function Home() {
           name="description"
           content="Tekno Alümil, Kıbrıs'ta alüminyum kapı, pencere, garaj kapısı ve balkon kapatma çözümleri sunar. Şimdi kaliteli ve estetik ürünlerimizi keşfedin!"
         />
+        {/* Preload critical hero images */}
+        <link rel="preload" href={image1} as="image" />
       </Helmet>
 
       <Box
@@ -56,9 +64,14 @@ function Home() {
           backgroundImage: `url(${images[currentImage].src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          transition: "background-image 0.6s ease-in-out",
+          transition: "transform 0.6s ease-in-out, opacity 0.6s ease-in-out",
         }}
       >
+        {/* Inline lazy loading for non-critical images */}
+        {images.map(({ src, alt }, index) => (
+          <LazyImage key={index} src={src} alt={alt} />
+        ))}
+
         <Box
           sx={{
             position: "absolute",
@@ -78,7 +91,7 @@ function Home() {
               fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
             }}
           >
-            {t("home.welcome_message", "Welcome to Tekno Alümil")}
+            {t("home.welcome_message")}
           </Typography>
           <Typography
             variant="body1"
@@ -87,7 +100,7 @@ function Home() {
               fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
             }}
           >
-            {t("home.service_description", "We offer high-quality aluminum solutions.")}
+            {t("home.service_description")}
           </Typography>
           <Box sx={{ marginTop: "2rem" }}>
             <Link
@@ -98,9 +111,65 @@ function Home() {
               }}
             >
               <Button variant="contained" color="secondary">
-                {t("home.about_button", "Learn More About Us")}
+                {t("home.about_button")}
               </Button>
             </Link>
+          </Box>
+        </Box>
+
+        {/* Working Hours Section */}
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: 70,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: { xs: "90%", sm: "75%", md: "60%", lg: "40%" },
+            padding: { xs: "10px", sm: "15px" },
+            backgroundColor: alpha(theme.palette.background.default, 0.8),
+            borderRadius: "12px",
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+            boxShadow: theme.shadows[5],
+          }}
+        >
+          <Avatar
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+              width: { xs: 40, sm: 50 },
+              height: { xs: 40, sm: 50 },
+            }}
+          >
+            <AccessTimeIcon
+              sx={{
+                fontSize: { xs: 24, sm: 30 },
+                color: theme.palette.primary.contrastText,
+              }}
+            />
+          </Avatar>
+          <Box>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{
+                fontSize: { xs: "14px", sm: "16px", md: "18px" },
+                lineHeight: "1.2",
+                color: theme.palette.text.primary,
+              }}
+            >
+              {t("home.working_hours_title")}
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: { xs: "12px", sm: "14px", md: "16px" },
+                lineHeight: "1.2",
+                color: theme.palette.text.secondary,
+              }}
+            >
+              {t("home.working_hours_detail")}
+            </Typography>
           </Box>
         </Box>
       </Box>
