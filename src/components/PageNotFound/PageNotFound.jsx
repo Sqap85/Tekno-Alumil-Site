@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import gif from "../../assets/images/godfather.gif";
+import gif from "../../assets/images/godfather.webp";
 
 function PageNotFound() {
   return (
