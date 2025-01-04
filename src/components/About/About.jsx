@@ -1,18 +1,19 @@
-import React from "react";
+import React, { memo, lazy, Suspense } from "react";
 import {
   Box,
   Typography,
-  Card,
-  CardContent,
-  Grid,
   Paper,
-  CardMedia,
+  Grid,
   Button,
   useTheme,
   useMediaQuery,
+  Skeleton,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+// Lazy load AboutCard
+const AboutCard = lazy(() => import("../AboutCard/AboutCard"));
 
 import qualityImage from "../../assets/images/quality.webp";
 import customerFocusImage from "../../assets/images/customer-focus.webp";
@@ -43,29 +44,6 @@ const aboutCards = [
   },
 ];
 
-const AboutCard = ({ title, description, image }) => (
-  <Card sx={{ height: "100%", textAlign: "center", boxShadow: 3 }}>
-    <CardMedia
-      component="img"
-      image={image}
-      alt={title}
-      sx={{
-        height: "150px",
-        objectFit: "cover",
-        borderRadius: "4px",
-      }}
-    />
-    <CardContent>
-      <Typography variant="h6" component="h3" gutterBottom color="primary">
-        {title}
-      </Typography>
-      <Typography variant="body2" color="textSecondary">
-        {description}
-      </Typography>
-    </CardContent>
-  </Card>
-);
-
 function About() {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -88,7 +66,6 @@ function About() {
           backgroundColor: theme.palette.background.paper,
           color: theme.palette.text.primary,
           borderRadius: "8px",
-          boxShadow: theme.shadows[3],
         }}
       >
         <Typography
@@ -140,11 +117,21 @@ function About() {
       >
         {aboutCards.map((card, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <AboutCard
-              title={t(card.titleKey)}
-              description={t(card.descriptionKey)}
-              image={card.image}
-            />
+            <Suspense
+              fallback={
+                <Skeleton
+                  variant="rectangular"
+                  width="100%"
+                  height={isSmallScreen ? 200 : 250}
+                />
+              }
+            >
+              <AboutCard
+                title={t(card.titleKey)}
+                description={t(card.descriptionKey)}
+                image={card.image}
+              />
+            </Suspense>
           </Grid>
         ))}
       </Grid>
@@ -163,16 +150,15 @@ function About() {
           backgroundColor: theme.palette.background.paper,
         }}
       >
-        <CardMedia
-          component="img"
-          image={selcukImage}
+        <img
+          src={selcukImage}
           alt={t("about.founder_section.title")}
-          sx={{
+          loading="lazy"
+          style={{
             width: isSmallScreen ? "100px" : "150px",
             height: isSmallScreen ? "100px" : "150px",
             borderRadius: "50%",
             objectFit: "cover",
-            boxShadow: theme.shadows[3],
           }}
         />
         <Box>
@@ -197,4 +183,4 @@ function About() {
   );
 }
 
-export default About;
+export default memo(About);
