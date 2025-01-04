@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // Lazy load AboutCard
-const AboutCard = lazy(() => import("../AboutCard/AboutCard"));
+const AboutCard = lazy(() => import("./AboutCard"));
 
 import qualityImage from "../../assets/images/quality.webp";
 import customerFocusImage from "../../assets/images/customer-focus.webp";
