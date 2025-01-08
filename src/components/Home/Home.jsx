@@ -45,7 +45,7 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Kıbrıs Alüminyum Kapı ve Pencere Çözümleri - Tekno Alümil</title>
+        <title>Tekno Alümil - Kıbrıs Alüminyum Çözümleri</title>
         <meta
           name="description"
           content="Tekno Alümil, Kıbrıs'ta alüminyum kapı, pencere, garaj kapısı ve balkon kapatma çözümleri sunar. Şimdi kaliteli ve estetik ürünlerimizi keşfedin!"
