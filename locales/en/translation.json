@@ -100,7 +100,7 @@
         "captcha_error": "Please complete the CAPTCHA verification.",
         "verification_email_sent": "A verification code has been sent to your email address.",
         "verification_email_error": "Verification code could not be sent. Please try again.",
-        "invalid_or_expired_code": "The verification code is invalid or expired. Please request a new code.",
+        "invalid_or_expired_code": "A new code has been sent because the verification code has expired.",
         "invalid_verification_code": "The verification code is incorrect. Please try again."
       },
       "verification": {
