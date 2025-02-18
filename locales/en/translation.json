@@ -90,9 +90,9 @@
         "message": "Your Message"
       },
       "buttons": {
-        "submit": "Submit",
+        "submit": "SUBMIT",
         "resend": "Resend",
-        "verify_and_send": "Verify and Send"
+        "verify_and_send": "VERIFY AND SEND"
       },
       "messages": {
         "success": "Your message has been sent successfully!",
