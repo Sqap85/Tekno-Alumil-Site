@@ -49,45 +49,44 @@ const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCodeLoading, setIsCodeLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Ana ekrandaki hata mesajları için
+  const [codeErrorMessage, setCodeErrorMessage] = useState(""); // Dialog içindeki hata mesajı için
   const [verificationCode, setVerificationCode] = useState("");
   const [isCodeDialogOpen, setIsCodeDialogOpen] = useState(false);
   const [enteredCode, setEnteredCode] = useState("");
 
+  const handleCaptchaChange = (value) => {
+    setCaptchaVerified(!!value);
+    if (value) {
+      setErrorMessage(""); // CAPTCHA doğrulandıysa hata mesajını temizle
+    }
+  };
+
   const { timeLeft, canResendCode, startTimer } = useVerificationTimer(
-    180,
+    90,
     () => {
       setVerificationCode(null);
-      setErrorMessage(t("contact.form.messages.invalid_or_expired_code"));
+      setCodeErrorMessage(t("contact.form.messages.invalid_or_expired_code"));
       setIsCodeDialogOpen(false);
     }
   );
 
- const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, t("contact.validation.name_min")) // Min characters set to 2
-    .max(100, t("contact.validation.name_max")) // Max characters increased to 100
-    .required(t("contact.validation.name_required")),
-
-  email: Yup.string()
-    .email(t("contact.validation.email_valid")) // Rely on Yup's email validator
-    .required(t("contact.validation.email_required")),
-    
-
-  message: Yup.string()
-    .min(3, t("contact.validation.message_min")) // Minimum 3 characters
-    .max(1000, t("contact.validation.message_max")) // Maximum 1000 characters
-    .required(t("contact.validation.message_required")),
-});
-
-
-  const handleCaptchaChange = (value) => {
-    setCaptchaVerified(!!value);
-  };
-
   const sendVerificationCode = (email) => {
+    if (verificationCode && timeLeft > 0) {
+      setIsCodeDialogOpen(true);
+      return;
+    }
+
     setIsCodeLoading(true);
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const generateSecureCode = () => {
+      const crypto = window.crypto || window.msCrypto;
+      const array = new Uint32Array(1);
+      crypto.getRandomValues(array);
+      return ((array[0] % 900000) + 100000).toString();
+    };
+
+    const code = generateSecureCode();
+
     setVerificationCode(code);
     startTimer();
 
@@ -110,7 +109,7 @@ const ContactForm = () => {
 
   const verifyCodeAndSendMessage = (values, resetForm) => {
     if (!verificationCode || enteredCode !== verificationCode) {
-      setErrorMessage(t("contact.form.messages.invalid_verification_code"));
+      setCodeErrorMessage(t("contact.form.messages.invalid_verification_code")); // Hata mesajını yalnızca dialog içinde göster
       return;
     }
 
@@ -128,6 +127,7 @@ const ContactForm = () => {
         setIsCodeDialogOpen(false);
         setVerificationCode(null);
         setEnteredCode("");
+        setCodeErrorMessage(""); // Dialog içindeki hata mesajını temizle
       })
       .catch(() => {
         setErrorMessage(t("contact.form.messages.error"));
@@ -138,17 +138,31 @@ const ContactForm = () => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h6">{t("contact.form.verification.title")}</Typography>
+        <Typography variant="h6">
+          {t("contact.form.verification.title")}
+        </Typography>
+
         <Formik
-          // validateOnBlur={false} // Blur (alan dışına tıklama) sırasında doğrulamayı devre dışı bırakır
-          // validateOnChange={false} // Değişiklik sırasında doğrulamayı devre dışı bırakır Kullanıcı formu doldururken: Hatalar gösterilmeyecek.
           initialValues={{ name: "", email: "", message: "" }}
-          validationSchema={validationSchema}
+          validationSchema={Yup.object({
+            name: Yup.string()
+              .min(2, t("contact.validation.name_min"))
+              .max(100, t("contact.validation.name_max"))
+              .required(t("contact.validation.name_required")),
+            email: Yup.string()
+              .email(t("contact.validation.email_valid"))
+              .required(t("contact.validation.email_required")),
+            message: Yup.string()
+              .min(3, t("contact.validation.message_min"))
+              .max(1000, t("contact.validation.message_max"))
+              .required(t("contact.validation.message_required")),
+          })}
           onSubmit={(values) => {
             if (!captchaVerified) {
               setErrorMessage(t("contact.form.messages.captcha_error"));
               return;
             }
+            setErrorMessage(""); // CAPTCHA doğrulandıysa hata mesajını temizle
             sendVerificationCode(values.email);
           }}
         >
@@ -214,11 +228,20 @@ const ContactForm = () => {
                 </Grid>
               </Grid>
 
+              {/* Ana ekrandaki hata mesajları (ReCAPTCHA, e-posta hatası gibi) */}
+              {errorMessage && (
+                <Alert severity="error" sx={{ marginTop: 2 }}>
+                  {errorMessage}
+                </Alert>
+              )}
+
               <Dialog
                 open={isCodeDialogOpen}
                 onClose={() => setIsCodeDialogOpen(false)}
               >
-                <DialogTitle>{t("contact.form.verification.title")}</DialogTitle>
+                <DialogTitle>
+                  {t("contact.form.verification.title")}
+                </DialogTitle>
                 <DialogContent>
                   <Typography>
                     {t("contact.form.verification.enter_code")}
@@ -231,9 +254,21 @@ const ContactForm = () => {
                     onChange={(e) => setEnteredCode(e.target.value)}
                     sx={{ marginTop: 2 }}
                   />
+
+                  {/* Hata mesajı yalnızca dialog içinde gösterilecek */}
+                  {codeErrorMessage && (
+                    <Alert severity="error" sx={{ marginTop: 2 }}>
+                      {codeErrorMessage}
+                    </Alert>
+                  )}
+
+                  {/* Süreyi burada gösteriyoruz */}
                   <Typography sx={{ marginTop: 2 }}>
-                    {t("contact.form.verification.code_timer", { time: timeLeft })}
+                    {t("contact.form.verification.code_timer", {
+                      time: timeLeft,
+                    })}
                   </Typography>
+
                   {canResendCode && (
                     <Button
                       variant="outlined"
@@ -260,19 +295,15 @@ const ContactForm = () => {
                   </Button>
                 </DialogActions>
               </Dialog>
+
+              {successMessage && (
+                <Alert severity="success" sx={{ marginTop: 2 }}>
+                  {successMessage}
+                </Alert>
+              )}
             </Form>
           )}
         </Formik>
-        {successMessage && (
-          <Alert severity="success" sx={{ marginTop: 2 }}>
-            {successMessage}
-          </Alert>
-        )}
-        {errorMessage && (
-          <Alert severity="error" sx={{ marginTop: 2 }}>
-            {errorMessage}
-          </Alert>
-        )}
       </CardContent>
     </Card>
   );
