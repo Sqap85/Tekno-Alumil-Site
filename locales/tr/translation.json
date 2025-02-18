@@ -100,7 +100,7 @@
         "captcha_error": "CAPTCHA doğrulamasını tamamlayın.",
         "verification_email_sent": "E-posta adresinize bir doğrulama kodu gönderildi.",
         "verification_email_error": "Doğrulama kodu gönderilemedi. Lütfen tekrar deneyin.",
-        "invalid_or_expired_code": "Doğrulama kodu geçersiz veya süresi dolmuş. Lütfen yeni bir kod talep edin.",
+        "invalid_or_expired_code": "Doğrulama kodu süresi dolduğu için yeni kod gönderildi.",
         "invalid_verification_code": "Doğrulama kodu hatalı. Lütfen tekrar deneyin."
       },
       "verification": {
