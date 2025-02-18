@@ -104,7 +104,7 @@
         "invalid_or_expired_code": "Doğrulama kodu süresi dolduğu için yeni kod gönderildi.",
         "invalid_verification_code": "Doğrulama kodu hatalı. Lütfen tekrar deneyin.",
         "success_message": "En kısa sürede size geri dönüş yapacağız!",
-        "cooldown_active": "Çok fazla deneme yaptınız. 30 saniye sonra tekrar deneyiniz."
+        "cooldown_active": "Çok fazla deneme yaptınız. {{time}} saniye sonra tekrar deneyiniz."
       },
       "verification": {
         "title": "Bize Ulaşın",
