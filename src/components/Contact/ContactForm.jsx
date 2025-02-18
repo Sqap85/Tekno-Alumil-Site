@@ -18,6 +18,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import emailjs from "emailjs-com";
+import { CheckCircle } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 
 const useVerificationTimer = (duration, onExpire) => {
@@ -49,16 +50,17 @@ const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCodeLoading, setIsCodeLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Ana ekrandaki hata mesajları için
-  const [codeErrorMessage, setCodeErrorMessage] = useState(""); // Dialog içindeki hata mesajı için
+  const [errorMessage, setErrorMessage] = useState("");
+  const [codeErrorMessage, setCodeErrorMessage] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [isCodeDialogOpen, setIsCodeDialogOpen] = useState(false);
   const [enteredCode, setEnteredCode] = useState("");
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
 
   const handleCaptchaChange = (value) => {
     setCaptchaVerified(!!value);
     if (value) {
-      setErrorMessage(""); // CAPTCHA doğrulandıysa hata mesajını temizle
+      setErrorMessage("");
     }
   };
 
@@ -107,11 +109,34 @@ const ContactForm = () => {
       .finally(() => setIsCodeLoading(false));
   };
 
+  const [attemptCount, setAttemptCount] = useState(0);
+  const [cooldownActive, setCooldownActive] = useState(false);
+
   const verifyCodeAndSendMessage = (values, resetForm) => {
-    if (!verificationCode || enteredCode !== verificationCode) {
-      setCodeErrorMessage(t("contact.form.messages.invalid_verification_code")); // Hata mesajını yalnızca dialog içinde göster
+    if (cooldownActive) {
+      setCodeErrorMessage(t("contact.form.messages.cooldown_active"));
       return;
     }
+
+    if (!verificationCode || enteredCode !== verificationCode) {
+      setAttemptCount((prev) => prev + 1);
+      if (attemptCount >= 5) {
+        // 6. yanlışta cooldown başlar
+        setCooldownActive(true);
+        setTimeout(() => {
+          setCooldownActive(false);
+          setAttemptCount(0);
+        }, 30000); // 30 saniye cooldown
+      }
+      setCodeErrorMessage(t("contact.form.messages.invalid_verification_code"));
+      return;
+    }
+
+    // Başarıyla doğrulandıktan sonra kod sıfırlanır
+    setVerificationCode(null);
+    setEnteredCode("");
+    setCodeErrorMessage("");
+    setAttemptCount(0);
 
     setIsLoading(true);
     emailjs
@@ -125,9 +150,7 @@ const ContactForm = () => {
         setSuccessMessage(t("contact.form.messages.success"));
         resetForm();
         setIsCodeDialogOpen(false);
-        setVerificationCode(null);
-        setEnteredCode("");
-        setCodeErrorMessage(""); // Dialog içindeki hata mesajını temizle
+        setIsSuccessDialogOpen(true);
       })
       .catch(() => {
         setErrorMessage(t("contact.form.messages.error"));
@@ -162,7 +185,7 @@ const ContactForm = () => {
               setErrorMessage(t("contact.form.messages.captcha_error"));
               return;
             }
-            setErrorMessage(""); // CAPTCHA doğrulandıysa hata mesajını temizle
+            setErrorMessage("");
             sendVerificationCode(values.email);
           }}
         >
@@ -228,7 +251,6 @@ const ContactForm = () => {
                 </Grid>
               </Grid>
 
-              {/* Ana ekrandaki hata mesajları (ReCAPTCHA, e-posta hatası gibi) */}
               {errorMessage && (
                 <Alert severity="error" sx={{ marginTop: 2 }}>
                   {errorMessage}
@@ -255,14 +277,12 @@ const ContactForm = () => {
                     sx={{ marginTop: 2 }}
                   />
 
-                  {/* Hata mesajı yalnızca dialog içinde gösterilecek */}
                   {codeErrorMessage && (
                     <Alert severity="error" sx={{ marginTop: 2 }}>
                       {codeErrorMessage}
                     </Alert>
                   )}
 
-                  {/* Süreyi burada gösteriyoruz */}
                   <Typography sx={{ marginTop: 2 }}>
                     {t("contact.form.verification.code_timer", {
                       time: timeLeft,
@@ -296,11 +316,32 @@ const ContactForm = () => {
                 </DialogActions>
               </Dialog>
 
-              {successMessage && (
-                <Alert severity="success" sx={{ marginTop: 2 }}>
-                  {successMessage}
-                </Alert>
-              )}
+              {/* Başarılı mesaj gönderildiğinde açılan dialog */}
+              <Dialog
+                open={isSuccessDialogOpen}
+                onClose={() => setIsSuccessDialogOpen(false)}
+              >
+                <DialogTitle
+                  sx={{ display: "flex", alignItems: "center", gap: 1 }}
+                >
+                  {t("contact.form.messages.success")}
+                  <CheckCircle color="success" />
+                </DialogTitle>
+                <DialogContent>
+                  <Typography>
+                    {t("contact.form.messages.success_message")}
+                  </Typography>
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    onClick={() => setIsSuccessDialogOpen(false)}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    {t("contact.form.buttons.close")}
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </Form>
           )}
         </Formik>
