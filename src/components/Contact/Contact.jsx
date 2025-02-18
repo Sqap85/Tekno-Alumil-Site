@@ -8,16 +8,19 @@ import ContactForm from "./ContactForm";
 
 const Contact = () => {
   const theme = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language;
 
   // Memoize static data to prevent re-creation on every render
   const phoneNumbers = useMemo(() => ["05338388585", "05488488585"], []);
   const email = useMemo(() => "teknoalumil85@gmail.com", []);
-  const googleMapsEmbedUrl = useMemo(
-    () =>
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.971742487271!2d33.867924699999996!3d35.1323787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dfcb4508dc81d5%3A0xd48bdf1c89f2c4ca!2sTekno%20Al%C3%BCmil!5e0!3m2!1str!2str!4v1735452569471!5m2!1str!2st",
-    []
-  );
+  const googleMapsEmbedUrl = useMemo(() => {
+    const baseUrl =
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.971742487271!2d33.867924699999996!3d35.1323787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dfcb4508dc81d5%3A0xd48bdf1c89f2c4ca!2sTekno%20Al%C3%BCmil!5e0!3m2!1s{lang}!2s!4v1735452569471!5m2!1s{lang}!2s";
+
+    // Replace {lang} with the current language
+    return baseUrl.replace(/{lang}/g, language);
+  }, [language]);
 
   return (
     <Box
