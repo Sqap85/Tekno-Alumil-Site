@@ -111,28 +111,51 @@ const ContactForm = () => {
 
   const [attemptCount, setAttemptCount] = useState(0);
   const [cooldownActive, setCooldownActive] = useState(false);
+  const [cooldownTime, setCooldownTime] = useState(0); // Track dynamic cooldown time
 
   const verifyCodeAndSendMessage = (values, resetForm) => {
     if (cooldownActive) {
-      setCodeErrorMessage(t("contact.form.messages.cooldown_active"));
+      // Dynamically show the remaining cooldown time in seconds
+      setCodeErrorMessage(
+        t("contact.form.messages.cooldown_active", {
+          time: Math.ceil(cooldownTime / 1000),
+        }) // Convert ms to seconds
+      );
       return;
     }
 
     if (!verificationCode || enteredCode !== verificationCode) {
       setAttemptCount((prev) => prev + 1);
-      if (attemptCount >= 5) {
-        // 6. yanlışta cooldown başlar
+
+      if (attemptCount >= 4) {
+        // Start cooldown after the 5th failed attempt
+        const newCooldownTime = 30000; // 30 seconds cooldown
+        setCooldownTime(newCooldownTime);
         setCooldownActive(true);
-        setTimeout(() => {
-          setCooldownActive(false);
-          setAttemptCount(0);
-        }, 30000); // 30 saniye cooldown
+
+        // Countdown every second
+        const countdownInterval = setInterval(() => {
+          setCooldownTime((prevTime) => {
+            if (prevTime <= 1000) {
+              // Stop the countdown when it reaches 0
+              clearInterval(countdownInterval); // Clear the interval
+              setCooldownActive(false); // Deactivate cooldown
+              setAttemptCount(0); // Reset the attempts
+              setCooldownTime(0); // Reset the cooldown time
+              return 0;
+            }
+            return prevTime - 1000; // Decrease the time by 1 second (1000 ms)
+          });
+        }, 1000); // Update every second
+      } else {
+        setCodeErrorMessage(
+          t("contact.form.messages.invalid_verification_code")
+        );
       }
-      setCodeErrorMessage(t("contact.form.messages.invalid_verification_code"));
       return;
     }
 
-    // Başarıyla doğrulandıktan sonra kod sıfırlanır
+    // Reset everything on successful verification
     setVerificationCode(null);
     setEnteredCode("");
     setCodeErrorMessage("");
@@ -169,14 +192,14 @@ const ContactForm = () => {
           initialValues={{ name: "", email: "", message: "" }}
           validationSchema={Yup.object({
             name: Yup.string()
-              .min(2, t("contact.validation.name_min"))
+              .min(3, t("contact.validation.name_min"))
               .max(100, t("contact.validation.name_max"))
               .required(t("contact.validation.name_required")),
             email: Yup.string()
               .email(t("contact.validation.email_valid"))
               .required(t("contact.validation.email_required")),
             message: Yup.string()
-              .min(3, t("contact.validation.message_min"))
+              .min(5, t("contact.validation.message_min"))
               .max(1000, t("contact.validation.message_max"))
               .required(t("contact.validation.message_required")),
           })}
