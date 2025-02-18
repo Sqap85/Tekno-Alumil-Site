@@ -92,7 +92,8 @@
       "buttons": {
         "submit": "SUBMIT",
         "resend": "Resend",
-        "verify_and_send": "VERIFY AND SEND"
+        "verify_and_send": "VERIFY AND SEND",
+        "close": "Close"
       },
       "messages": {
         "success": "Your message has been sent successfully!",
@@ -101,7 +102,9 @@
         "verification_email_sent": "A verification code has been sent to your email address.",
         "verification_email_error": "Verification code could not be sent. Please try again.",
         "invalid_or_expired_code": "A new code has been sent because the verification code has expired.",
-        "invalid_verification_code": "The verification code is incorrect. Please try again."
+        "invalid_verification_code": "The verification code is incorrect. Please try again.",
+        "success_message": "We will get back to you as soon as possible!",
+        "cooldown_active":"You have made too many attempts. Please try again after 30 seconds."
       },
       "verification": {
         "title": "Get in Touch",
