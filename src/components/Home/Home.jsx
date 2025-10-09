@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { alpha } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import image1 from "../../assets/images/1-small.avif";
-import image2 from "../../assets/images/2-small.avif";
-import image3 from "../../assets/images/3-small.avif";
+import image1 from "../../assets/images/1-small.webp";
+import image2 from "../../assets/images/2-small.webp";
+import image3 from "../../assets/images/3-small.webp";
 
 // Lazy loading component for better performance
 const LazyImage = ({ src, alt }) => (

@@ -1,0 +1,61 @@
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/
+.vite/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.cache-loader/
+.parcel-cache/
+.sass-cache/
+.eslintcache
+.vitepress/cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+.history/
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+
+# Backups and temporary artifacts
+src/assets/images/.backup_*/
+*.bak
+*.backup
+
+# Node repl history
+.node_repl_history
+
+# Misc
+*.tmp
+
