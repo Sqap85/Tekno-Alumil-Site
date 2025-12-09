@@ -1,9 +1,11 @@
 import React from "react";
 import { Fab, Tooltip } from "@mui/material";
 import { FaWhatsapp } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import "./WhatsAppButton.css";
 
 const WhatsAppButton = () => {
+  const { t } = useTranslation();
   const phoneNumber = "905488488585"; 
 
   const handleWhatsAppClick = () => {
@@ -12,7 +14,7 @@ const WhatsAppButton = () => {
   };
 
   return (
-    <Tooltip title="WhatsApp ile iletişime geç" placement="left">
+    <Tooltip title={t("whatsapp.tooltip")} placement="left">
       <Fab
         className="whatsapp-button"
         color="success"

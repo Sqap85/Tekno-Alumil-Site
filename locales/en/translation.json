@@ -114,6 +114,9 @@
       }
     }
   },
+  "whatsapp": {
+    "tooltip": "Contact via WhatsApp"
+  },
   "services": {
     "header_title": "Our Services",
     "header_subtitle": "Aesthetic and durable solutions for your living spaces.",

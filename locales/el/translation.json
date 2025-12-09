@@ -114,6 +114,9 @@
       }
     }
   },
+  "whatsapp": {
+    "tooltip": "Επικοινωνήστε μέσω WhatsApp"
+  },
   "services": {
     "header_title": "Οι Υπηρεσίες μας",
     "header_subtitle": "Αισθητικές και ανθεκτικές λύσεις για τους χώρους σας.",

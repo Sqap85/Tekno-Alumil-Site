@@ -114,6 +114,9 @@
       }
     }
   },
+  "whatsapp": {
+    "tooltip": "WhatsApp ile iletişime geç"
+  },
   "services": {
     "header_title": "Hizmetlerimiz",
     "header_subtitle": "Yaşam alanlarınız için estetik ve dayanıklı çözümler.",
