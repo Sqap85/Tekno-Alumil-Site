@@ -9,6 +9,7 @@ import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton";
 import "./i18n";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      <WhatsAppButton />
     </React.Fragment>
   );
 }
