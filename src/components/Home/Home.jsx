@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import { Box, Typography, Button, Avatar, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -7,30 +7,14 @@ import { useTranslation } from "react-i18next";
 import { useSeoHelmet } from "../../hooks/useSeoHelmet";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import image1 from "../../assets/images/1-small.webp";
-import image2 from "../../assets/images/2-small.webp";
-import image3 from "../../assets/images/3-small.webp";
-
-const images = [
-  { src: image1, alt: "Tekno Alümil - Kıbrıs alüminyum kapı ve pencere çözümleri" },
-  { src: image2, alt: "Tekno Alümil - Alüminyum balkon kapatma ve pergola sistemleri" },
-  { src: image3, alt: "Tekno Alümil - Gazimağusa profesyonel alüminyum uygulamaları" },
-];
 
 function Home() {
   const theme = useTheme();
   const { t } = useTranslation();
-  const [currentImage, setCurrentImage] = useState(0);
   const { title, description, canonical, hreflangLinks, ogUrl } = useSeoHelmet({
     titleKey: "home_seo.title",
     descriptionKey: "home_seo.description",
   });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
 return (
     <>
@@ -54,11 +38,10 @@ return (
           width: "100vw",
           height: "100vh",
           overflow: "hidden",
-          backgroundImage: `url(${images[currentImage].src})`,
+          backgroundImage: `url(${image1})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          transition: "background-image 0.6s ease-in-out",
-          "&::after": {
+"&::after": {
             content: '""',
             position: "absolute",
             inset: 0,
