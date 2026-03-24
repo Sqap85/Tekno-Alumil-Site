@@ -8,7 +8,7 @@ const ScrollToTop = () => {
     // Rota değiştikten sonra sayfa konumunu sıfırla (yukarı kaydır)
     window.scrollTo({
       top: 0,
-      behavior: "auto", // Anlık kaydırma (yumuşak değil)
+      behavior: "smooth",
     });
   }, [pathname]); // Rota değiştiğinde çalışır
 

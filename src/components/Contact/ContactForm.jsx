@@ -250,13 +250,15 @@ const ContactForm = () => {
                     helperText={touched.message && errors.message}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <ReCAPTCHA
-                    theme={theme.palette.mode}
-                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                    onChange={handleCaptchaChange}
-                  />
-                </Grid>
+                {import.meta.env.VITE_RECAPTCHA_SITE_KEY && (
+                  <Grid item xs={12}>
+                    <ReCAPTCHA
+                      theme={theme.palette.mode}
+                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                      onChange={handleCaptchaChange}
+                    />
+                  </Grid>
+                )}
                 <Grid item xs={12}>
                   <Button
                     variant="contained"

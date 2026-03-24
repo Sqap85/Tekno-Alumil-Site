@@ -4,6 +4,15 @@
     box-sizing: border-box;
   }
   body, html {
-    height: 100%; /* Sayfanın tamamını kapsar */
-    width: 100%; /* Sayfanın tamamını kapsar */
+    height: 100%;
+    width: 100%;
+  }
+
+  /* NProgress loading bar rengi */
+  #nprogress .bar {
+    background: #ef1717 !important;
+    height: 3px !important;
+  }
+  #nprogress .peg {
+    box-shadow: 0 0 10px #ef1717, 0 0 5px #ef1717 !important;
   }

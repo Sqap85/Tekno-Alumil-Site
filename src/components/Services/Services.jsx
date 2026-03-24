@@ -9,8 +9,10 @@ import {
   useMediaQuery,
   Skeleton,
 } from "@mui/material";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSeoHelmet } from "../../hooks/useSeoHelmet";
 
 // Lazy load ServiceCard
 const LazyServiceCard = lazy(() => import("./ServiceCard"));
@@ -49,8 +51,24 @@ function Services() {
   const { t } = useTranslation();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const { title, description, canonical, hreflangLinks, ogUrl } = useSeoHelmet({
+    titleKey: "services_seo.title",
+    descriptionKey: "services_seo.description",
+  });
 
   return (
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={ogUrl} />
+        {hreflangLinks.map((link) => (
+          <link key={link.hreflang} rel={link.rel} hreflang={link.hreflang} href={link.href} />
+        ))}
+      </Helmet>
     <Box
       sx={{
         padding: isSmallScreen ? "1rem" : "2rem",
@@ -118,6 +136,7 @@ function Services() {
         </Link>
       </Box>
     </Box>
+    </>
   );
 }
 

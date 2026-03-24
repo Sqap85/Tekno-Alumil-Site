@@ -1,7 +1,9 @@
 import React, { useMemo } from "react";
 import { Box, Typography } from "@mui/material";
+import { Helmet } from "react-helmet";
 import { useTheme } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
+import { useSeoHelmet } from "../../hooks/useSeoHelmet";
 import ContactInfo from "./ContactInfo";
 import GoogleMaps from "./GoogleMaps";
 import ContactForm from "./ContactForm";
@@ -10,6 +12,10 @@ const Contact = () => {
   const theme = useTheme();
   const { t, i18n } = useTranslation();
   const language = i18n.language;
+  const { title, description, canonical, hreflangLinks, ogUrl } = useSeoHelmet({
+    titleKey: "contact_seo.title",
+    descriptionKey: "contact_seo.description",
+  });
 
   // Memoize static data to prevent re-creation on every render
   const phoneNumbers = useMemo(() => ["05338388585", "05488488585"], []);
@@ -23,23 +29,36 @@ const Contact = () => {
   }, [language]);
 
   return (
-    <Box
-      sx={{
-        padding: { xs: 2, sm: 4 },
-        display: "flex",
-        flexDirection: "column",
-        gap: 4,
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary,
-      }}
-    >
-      <Typography variant="h4" textAlign="center">
-        {t("contact.page.title")}
-      </Typography>
-      <ContactInfo phoneNumbers={phoneNumbers} email={email} />
-      <GoogleMaps googleMapsEmbedUrl={googleMapsEmbedUrl} />
-      <ContactForm />
-    </Box>
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={ogUrl} />
+        {hreflangLinks.map((link) => (
+          <link key={link.hreflang} rel={link.rel} hreflang={link.hreflang} href={link.href} />
+        ))}
+      </Helmet>
+      <Box
+        sx={{
+          padding: { xs: 2, sm: 4 },
+          display: "flex",
+          flexDirection: "column",
+          gap: 4,
+          backgroundColor: theme.palette.background.default,
+          color: theme.palette.text.primary,
+        }}
+      >
+        <Typography variant="h4" textAlign="center">
+          {t("contact.page.title")}
+        </Typography>
+        <ContactInfo phoneNumbers={phoneNumbers} email={email} />
+        <GoogleMaps googleMapsEmbedUrl={googleMapsEmbedUrl} />
+        <ContactForm />
+      </Box>
+    </>
   );
 };
 

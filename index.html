@@ -66,12 +66,16 @@ Kapı, pencere, sinek teli ve daha fazlası için profesyonel hizmetler. Kıbrı
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Tekno Alümil",
-        "image": "https://www.teknoalumil.com/images/logo.png",
-        "description": "Kıbrıs'ta alüminyum kapı, pencere, balkon kapatma, pergola, çit sistemleri ve daha fazlası.",
+        "image": [
+          "https://www.teknoalumil.com/images/logo.png",
+          "https://www.teknoalumil.com/images/og-image.jpg"
+        ],
+        "description": "Kıbrıs'ta alüminyum kapı, pencere, balkon kapatma, pergola, çit sistemleri ve daha fazlası. 2008'den bu yana kalite ve güven.",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Guvercinlik sanayi bölgesi",
-          "addressLocality": "Kıbrıs",
+          "streetAddress": "Güvercinlik Sanayi Bölgesi",
+          "addressLocality": "Gazimağusa",
+          "addressRegion": "Gazimağusa",
           "addressCountry": "CY"
         },
         "geo": {
@@ -81,14 +85,39 @@ Kapı, pencere, sinek teli ve daha fazlası için profesyonel hizmetler. Kıbrı
         },
         "url": "https://www.teknoalumil.com",
         "telephone": "+90-533-838-8585",
+        "email": "teknoalumil85@gmail.com",
         "priceRange": "$$",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "08:00",
-            "closes": "18:00"
+            "closes": "17:00"
           }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+90-533-838-8585",
+          "email": "teknoalumil85@gmail.com",
+          "url": "https://www.teknoalumil.com/contact"
+        },
+        "sameAs": [
+          "https://www.teknoalumil.com"
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.teknoalumil.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Hakkımızda", "item": "https://www.teknoalumil.com/about" },
+          { "@type": "ListItem", "position": 3, "name": "Hizmetler", "item": "https://www.teknoalumil.com/services" },
+          { "@type": "ListItem", "position": 4, "name": "İletişim", "item": "https://www.teknoalumil.com/contact" }
         ]
       }
     </script>

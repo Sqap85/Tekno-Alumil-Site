@@ -80,7 +80,20 @@ const ContactInfo = ({ phoneNumbers, email }) => {
           >
             <MdLocationOn /> {t("contact.info.address_label")}:
           </Typography>
-          <Typography variant="body2">{t("contact.info.address")}</Typography>
+          <Typography
+            variant="body2"
+            component="a"
+            href="https://www.google.com/maps?q=Tekno+Alümil,+Güvercinlik+Sanayi+Bölgesi,+Gazimağusa"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              textDecoration: "none",
+              color: "primary.main",
+              "&:hover": { textDecoration: "underline" },
+            }}
+          >
+            {t("contact.info.address")}
+          </Typography>
         </Box>
       </CardContent>
     </Card>

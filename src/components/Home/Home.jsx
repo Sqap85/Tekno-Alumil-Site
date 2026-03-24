@@ -4,35 +4,26 @@ import { Box, Typography, Button, Avatar, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { alpha } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
+import { useSeoHelmet } from "../../hooks/useSeoHelmet";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import image1 from "../../assets/images/1-small.webp";
 import image2 from "../../assets/images/2-small.webp";
 import image3 from "../../assets/images/3-small.webp";
 
-// Lazy loading component for better performance
-const LazyImage = ({ src, alt }) => (
-  <img src={src} alt={alt} loading="lazy" style={{ display: "none" }} />
-);
-
 const images = [
-  { src: image1, alt: "Image 1 Description" },
-  { src: image2, alt: "Image 2 Description" },
-  { src: image3, alt: "Image 3 Description" },
+  { src: image1, alt: "Tekno Alümil - Kıbrıs alüminyum kapı ve pencere çözümleri" },
+  { src: image2, alt: "Tekno Alümil - Alüminyum balkon kapatma ve pergola sistemleri" },
+  { src: image3, alt: "Tekno Alümil - Gazimağusa profesyonel alüminyum uygulamaları" },
 ];
 
 function Home() {
   const theme = useTheme();
   const { t } = useTranslation();
   const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    // Preload critical images
-    const preloadImages = () => {
-      const img = new Image();
-      img.src = images[0].src; // Preload first image for LCP
-    };
-    preloadImages();
-  }, []);
+  const { title, description, canonical, hreflangLinks, ogUrl } = useSeoHelmet({
+    titleKey: "home_seo.title",
+    descriptionKey: "home_seo.description",
+  });
 
   useEffect(() => {
     // Change the image every 5 seconds
@@ -45,13 +36,16 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Tekno Alümil - Kıbrıs Alüminyum Çözümleri</title>
-        <meta
-          name="description"
-          content="Tekno Alümil, Kıbrıs'ta alüminyum kapı, pencere, garaj kapısı ve balkon kapatma çözümleri sunar. Şimdi kaliteli ve estetik ürünlerimizi keşfedin!"
-        />
-        {/* Preload critical hero images */}
-        <link rel="preload" href={image1} as="image" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={ogUrl} />
+        {hreflangLinks.map((link) => (
+          <link key={link.hreflang} rel={link.rel} hreflang={link.hreflang} href={link.href} />
+        ))}
+        <link rel="preload" href={image1} as="image" fetchpriority="high" />
       </Helmet>
 
       <Box
@@ -64,13 +58,9 @@ function Home() {
           backgroundImage: `url(${images[currentImage].src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          transition: "transform 0.6s ease-in-out, opacity 0.6s ease-in-out",
+          transition: "background-image 0.6s ease-in-out",
         }}
       >
-        {/* Inline lazy loading for non-critical images */}
-        {images.map(({ src, alt }, index) => (
-          <LazyImage key={index} src={src} alt={alt} />
-        ))}
 
         <Box
           sx={{

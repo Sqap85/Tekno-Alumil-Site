@@ -117,6 +117,31 @@
   "whatsapp": {
     "tooltip": "WhatsApp ile iletişime geç"
   },
+  "notfound": {
+    "title": "Sayfa Bulunamadı",
+    "message": "Aradığınız sayfa bulunamadı.",
+    "go_home": "Ana Sayfaya Dön",
+    "seo": {
+      "title": "Sayfa Bulunamadı | Tekno Alümil",
+      "description": "Aradığınız sayfa mevcut değil. Ana sayfaya dönün ve Tekno Alümil'in alüminyum çözümlerini keşfedin."
+    }
+  },
+  "home_seo": {
+    "title": "Tekno Alümil | Kıbrıs Alüminyum Çözümleri",
+    "description": "Tekno Alümil, Kıbrıs'ta alüminyum kapı, pencere, garaj kapısı, pergola ve balkon kapatma çözümleri sunar. 2008'den bu yana kalite ve güven."
+  },
+  "about_seo": {
+    "title": "Hakkımızda | Tekno Alümil — Kıbrıs",
+    "description": "2008'den bu yana Kıbrıs'ın önde gelen alüminyum uzmanı. Tekno Alümil'in hikayesini, ekibini ve değerlerini keşfedin."
+  },
+  "services_seo": {
+    "title": "Hizmetlerimiz | Alüminyum Kapı, Pencere, Pergola — Tekno Alümil",
+    "description": "Kapılar, pencereler, garaj kapıları, balkon kapatma, pergola, sinek teli ve daha fazlası. Kıbrıs'ta alüminyum çözümleri için Tekno Alümil."
+  },
+  "contact_seo": {
+    "title": "İletişim | Tekno Alümil — Gazimağusa, Kıbrıs",
+    "description": "Tekno Alümil ile iletişime geçin. Gazimağusa, Kıbrıs. Telefon, e-posta veya iletişim formu aracılığıyla bize ulaşın."
+  },
   "services": {
     "header_title": "Hizmetlerimiz",
     "header_subtitle": "Yaşam alanlarınız için estetik ve dayanıklı çözümler.",

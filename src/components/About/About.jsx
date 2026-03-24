@@ -9,8 +9,10 @@ import {
   useMediaQuery,
   Skeleton,
 } from "@mui/material";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSeoHelmet } from "../../hooks/useSeoHelmet";
 
 // Lazy load AboutCard
 const AboutCard = lazy(() => import("./AboutCard"));
@@ -48,8 +50,24 @@ function About() {
   const { t } = useTranslation();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const { title, description, canonical, hreflangLinks, ogUrl } = useSeoHelmet({
+    titleKey: "about_seo.title",
+    descriptionKey: "about_seo.description",
+  });
 
   return (
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={ogUrl} />
+        {hreflangLinks.map((link) => (
+          <link key={link.hreflang} rel={link.rel} hreflang={link.hreflang} href={link.href} />
+        ))}
+      </Helmet>
     <Box
       sx={{
         padding: isSmallScreen ? "1rem" : "2rem",
@@ -153,7 +171,9 @@ function About() {
         <img
           src={selcukImage}
           alt={t("about.founder_section.title")}
-          loading="lazy"
+          loading="eager"
+          width="150"
+          height="150"
           style={{
             width: isSmallScreen ? "100px" : "150px",
             height: isSmallScreen ? "100px" : "150px",
@@ -180,6 +200,7 @@ function About() {
         </Link>
       </Box>
     </Box>
+    </>
   );
 }
 

@@ -58,4 +58,8 @@ src/assets/images/.backup_*/
 
 # Misc
 *.tmp
+.claude
+
+# MCP config (may contain API keys)
+.mcp.json
 

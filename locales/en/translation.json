@@ -117,6 +117,31 @@
   "whatsapp": {
     "tooltip": "Contact via WhatsApp"
   },
+  "notfound": {
+    "title": "Page Not Found",
+    "message": "Sorry, the page you are looking for cannot be found.",
+    "go_home": "Go Back to Homepage",
+    "seo": {
+      "title": "Page Not Found | Tekno Alumil",
+      "description": "The page you are looking for does not exist. Return to the homepage and explore Tekno Alumil's aluminum solutions."
+    }
+  },
+  "home_seo": {
+    "title": "Tekno Alumil | Aluminum Solutions in Cyprus",
+    "description": "Tekno Alumil offers aluminum doors, windows, garage doors, pergolas and balcony enclosures in Cyprus. Quality and trust since 2008."
+  },
+  "about_seo": {
+    "title": "About Us | Tekno Alumil — Cyprus",
+    "description": "Cyprus's leading aluminum specialist since 2008. Discover the story, team, and values behind Tekno Alumil."
+  },
+  "services_seo": {
+    "title": "Services | Aluminum Doors, Windows, Pergolas — Tekno Alumil",
+    "description": "Doors, windows, garage doors, balcony enclosures, pergolas, fly screens and more. Tekno Alumil aluminum solutions in Cyprus."
+  },
+  "contact_seo": {
+    "title": "Contact | Tekno Alumil — Famagusta, Cyprus",
+    "description": "Get in touch with Tekno Alumil. Famagusta, Cyprus. Reach us by phone, email or contact form."
+  },
   "services": {
     "header_title": "Our Services",
     "header_subtitle": "Aesthetic and durable solutions for your living spaces.",

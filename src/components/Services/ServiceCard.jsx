@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 
@@ -12,16 +12,19 @@ function ServiceCard({ title, description, image }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        borderRadius: "4px", 
+        borderRadius: "4px",
       }}
     >
       <CardMedia
         component="img"
         image={image}
         alt={title}
-        loading="lazy" 
+        loading="lazy"
+        width="300"
+        height="150"
         sx={{
           height: "150px",
+          aspectRatio: "2/1",
           objectFit: "cover",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
@@ -52,4 +55,4 @@ ServiceCard.propTypes = {
   image: PropTypes.string.isRequired,
 };
 
-export default ServiceCard;
+export default memo(ServiceCard);

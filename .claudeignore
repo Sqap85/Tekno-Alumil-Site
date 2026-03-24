@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+*.log
+.DS_Store
+src/assets/images/
+public/
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.svg
+.env
+.env.*
