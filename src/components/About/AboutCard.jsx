@@ -6,11 +6,6 @@ const AboutCard = ({ title, description, image }) => (
     height: "100%",
     textAlign: "center",
     boxShadow: 3,
-    transition: "transform 0.2s ease, box-shadow 0.2s ease",
-    "&:hover": {
-      transform: "translateY(-4px)",
-      boxShadow: 8,
-    },
   }}>
     <CardMedia
       component="img"

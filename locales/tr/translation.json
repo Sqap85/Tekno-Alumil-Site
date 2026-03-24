@@ -53,6 +53,16 @@
     },
     "services_section": {
       "button_text": "DAHA FAZLASI İÇİN HİZMETLERİMİZİ İNCELEYİN"
+    },
+    "timeline": {
+      "title": "Tarihçemiz",
+      "items": [
+        { "year": "2008", "description": "Tekno Alümil, Gazimağusa'da kuruldu." },
+        { "year": "2012", "description": "Garaj kapıları ve pergola hizmetleri portföye eklendi." },
+        { "year": "2016", "description": "Kıbrıs'ın köklü alüminyum markası haline gelindi." },
+        { "year": "2020", "description": "Online iletişim kanalları ve kurumsal web sitesi hayata geçirildi." },
+        { "year": "2024", "description": "Yenilikçi tasarım ve kaliteli işçilikle büyümeye devam ediyoruz." }
+      ]
     }
   },
   "contact": {

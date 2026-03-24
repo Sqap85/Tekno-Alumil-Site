@@ -2,52 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Ana Sayfa / Home -->
   <url>
     <loc>https://www.teknoalumil.com/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.teknoalumil.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.teknoalumil.com/"/>
-    <lastmod>2026-03-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/el/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2026-03-24</lastmod>
   </url>
 
-  <!-- Hakkımızda / About -->
   <url>
     <loc>https://www.teknoalumil.com/about</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.teknoalumil.com/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/about"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.teknoalumil.com/about"/>
-    <lastmod>2026-03-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/el/about"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2026-03-24</lastmod>
   </url>
 
-  <!-- Hizmetler / Services -->
   <url>
     <loc>https://www.teknoalumil.com/services</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.teknoalumil.com/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/services"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.teknoalumil.com/services"/>
-    <lastmod>2026-03-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/en/services"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/el/services"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-03-24</lastmod>
   </url>
 
-  <!-- İletişim / Contact -->
   <url>
     <loc>https://www.teknoalumil.com/contact</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.teknoalumil.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.teknoalumil.com/contact"/>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>yearly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.teknoalumil.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://www.teknoalumil.com/el/contact"/>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <lastmod>2026-03-24</lastmod>
   </url>
 
 </urlset>

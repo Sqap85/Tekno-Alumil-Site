@@ -26,14 +26,13 @@ function Home() {
   });
 
   useEffect(() => {
-    // Change the image every 5 seconds
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  return (
+return (
     <>
       <Helmet>
         <title>{title}</title>
@@ -59,6 +58,13 @@ function Home() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           transition: "background-image 0.6s ease-in-out",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.55) 100%)",
+            pointerEvents: "none",
+          },
         }}
       >
 
@@ -72,6 +78,7 @@ function Home() {
             color: "white",
             textShadow: `2px 2px 8px ${alpha("#000", 0.7)}`,
             width: { xs: "90%", sm: "70%", md: "50%" },
+            zIndex: 1,
           }}
         >
           <Typography
@@ -114,6 +121,7 @@ function Home() {
             bottom: 70,
             left: "50%",
             transform: "translateX(-50%)",
+            zIndex: 1,
             width: { xs: "90%", sm: "75%", md: "60%", lg: "40%" },
             padding: { xs: "10px", sm: "15px" },
             backgroundColor: alpha(theme.palette.background.default, 0.8),

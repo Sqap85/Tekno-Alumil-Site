@@ -68,6 +68,18 @@ function Services() {
         {hreflangLinks.map((link) => (
           <link key={link.hreflang} rel={link.rel} hreflang={link.hreflang} href={link.href} />
         ))}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": t("services.header_title"),
+          "url": canonical,
+          "itemListElement": services.map((s, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": t(s.titleKey),
+            "description": t(s.descKey),
+          })),
+        })}</script>
       </Helmet>
     <Box
       sx={{

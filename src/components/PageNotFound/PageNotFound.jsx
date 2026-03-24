@@ -1,10 +1,18 @@
 import React from "react";
 import { Box, Typography, Grid, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 import gif from "../../assets/images/godfather.webp";
 
 function PageNotFound() {
+  const { t } = useTranslation();
   return (
+    <>
+      <Helmet>
+        <title>{t("notfound.seo.title")}</title>
+        <meta name="description" content={t("notfound.seo.description")} />
+      </Helmet>
     <Box
       sx={{
         position: "absolute",
@@ -48,16 +56,17 @@ function PageNotFound() {
             404
           </Typography>
           <Typography variant="h6" color="text.primary" paragraph>
-            Sorry, the page you are looking for cannot be found.
+            {t("notfound.message")}
           </Typography>
           <Link to="/" style={{ textDecoration: "none" }}>
             <Button variant="contained" color="error" size="large">
-              Go Back to Homepage
+              {t("notfound.go_home")}
             </Button>
           </Link>
         </Grid>
       </Grid>
     </Box>
+    </>
   );
 }
 

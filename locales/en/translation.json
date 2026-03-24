@@ -53,6 +53,16 @@
     },
     "services_section": {
       "button_text": "EXPLORE OUR SERVICES FOR MORE"
+    },
+    "timeline": {
+      "title": "Our History",
+      "items": [
+        { "year": "2008", "description": "Tekno Alumil was founded in Famagusta, Cyprus." },
+        { "year": "2012", "description": "Garage doors and pergola services were added to our portfolio." },
+        { "year": "2016", "description": "We became one of Cyprus's leading aluminum brands." },
+        { "year": "2020", "description": "Online communication channels and corporate website were launched." },
+        { "year": "2024", "description": "We continue to grow with innovative design and quality craftsmanship." }
+      ]
     }
   },
   "contact": {
