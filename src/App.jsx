@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import "./App.css";
+import { Box } from "@mui/material";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -33,7 +34,7 @@ function App() {
     <React.Fragment>
       {showHeader && <Header />}
       <ScrollToTop />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Box sx={{ minHeight: "100vh" }} />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
